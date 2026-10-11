@@ -137,22 +137,19 @@ document.querySelectorAll('.pill').forEach(b=>b.addEventListener('click',()=>ren
     return;
   }
 
-  if (cart.length !== 1 || cart[0].qty !== 1) {
-    alert('Checkout is currently in test mode and supports one item per checkout. Please leave just one item in your cart.');
+  const checkoutProducts = { 1: 'tee', 4: 'hoodie' };
+  const unsupported = cart.find(item => !checkoutProducts[item.id]);
+  if (unsupported) {
+    alert('One or more items are not available for checkout yet. Please remove them and try again.');
     return;
   }
 
-  const item = cart[0];
-  const checkoutProducts = {
-    1: 'tee',
-    4: 'hoodie'
-  };
-  const product = checkoutProducts[item.id];
-
-  if (!product) {
-    alert('Online checkout is currently enabled for the Dog Dollars Classic Tee and Classic Hoodie only. Other items are not connected to checkout yet.');
-    return;
-  }
+  const items = cart.map(item => ({
+    product: checkoutProducts[item.id],
+    quantity: item.qty,
+    size: item.size,
+    colour: item.colour
+  }));
 
   const originalText = button.textContent;
   button.disabled = true;
@@ -164,16 +161,14 @@ document.querySelectorAll('.pill').forEach(b=>b.addEventListener('click',()=>ren
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ product })
+        body: JSON.stringify({ items })
       }
     );
 
     const result = await response.json().catch(() => ({}));
-
     if (!response.ok || !result.url) {
       throw new Error(result.error || 'Checkout could not be started. Please try again.');
     }
-
     window.location.href = result.url;
   } catch (error) {
     console.error('Dog Dollars checkout error:', error);
