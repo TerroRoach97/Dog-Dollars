@@ -160,7 +160,7 @@ document.querySelectorAll('.pill').forEach(b=>b.addEventListener('click',()=>ren
       'https://dog-dollars-checkout.2zhz46bkvq.workers.dev/create-checkout-session',
       {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'text/plain;charset=UTF-8' }
         body: JSON.stringify({ items })
       }
     );
