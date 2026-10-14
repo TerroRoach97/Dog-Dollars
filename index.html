@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dog Dollars Cup v8 Cup Upgrade · Dog Dollars — Fast Track Fashion</title>
+<title>Dog Dollars Cup v7 Race Fix · Dog Dollars — Fast Track Fashion</title>
 <meta name="description" content="Dog Dollars — premium greyhound-racing streetwear, bar gear and free interactive racing games. Fast Track Fashion.">
 <meta name="theme-color" content="#111111">
 <meta property="og:type" content="website">
@@ -62,7 +62,7 @@
 .racePickV6{display:flex;align-items:center;gap:9px;text-align:left;background:#222;border:1px solid #414141;color:#fff;border-radius:12px;padding:9px;min-width:0}.racePickV6 img{width:52px;height:40px;border-radius:7px;object-fit:contain;object-position:center;flex:none;background:#151515;border:1px solid #555}.racePickV6 strong{display:block;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.racePickV6 span{min-width:0}.racePickV6 small{display:block;color:#aaa;font-size:9px;margin-top:2px}.racePickV6.selected{background:#fff;color:#111;border-color:#fff}.racePickV6.selected small{color:#666}.racePickV6.winner{outline:3px solid var(--yellow);box-shadow:0 0 0 4px rgba(243,200,66,.15)}
 .raceResult{min-height:26px;margin-top:12px;font-weight:1000;font-size:14px}.raceResult span{color:var(--yellow)}.raceExtras{margin-top:10px;display:flex;gap:10px;align-items:flex-start;flex-wrap:wrap}.raceExtras .btn{padding:10px 14px}.raceHistory{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.historyChip{background:#222;border:1px solid #444;color:#ddd;border-radius:999px;padding:7px 9px;font-size:10px;font-weight:900}.historyChip strong{color:#f3c842}.raceExtras + .racePicksV6{margin-top:10px}
 @media(max-width:850px){.raceTop{display:block}.raceTop p{margin-top:8px}.raceTrackV6{height:292px}.racePicksV6{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.ddPredictionModes{gap:5px}.ddPredictionModes button{font-size:10px;padding:8px 3px}.ddPredictionModes small{font-size:9px}.raceV6{padding:15px;border-radius:22px}.raceBoard{padding:8px}.racePhoto{aspect-ratio:4/3}.raceTrackV6{height:286px}.runnerToken{width:58px;height:27px}.runnerName{font-size:8px;left:4px}.runnerToken{left:18%;width:64px;height:30px}.racePicksV6{grid-template-columns:1fr 1fr}.racePickV6{padding:8px}.racePickV6 img{width:46px;height:38px}}
+@media(max-width:520px){.raceV6{padding:15px;border-radius:22px}.raceBoard{padding:8px}.racePhoto{aspect-ratio:4/3}.raceTrackV6{height:286px}.runnerToken{width:58px;height:27px}.runnerName{font-size:8px;left:4px}.runnerToken{left:18%;width:64px;height:30px}.racePicksV6{grid-template-columns:1fr 1fr}.racePickV6{padding:8px}.racePickV6 img{width:46px;height:38px}}
 
 
 /* Product detail photo — no simulated preview */
@@ -211,7 +211,7 @@
 .packCardInfo button:disabled{opacity:1;cursor:not-allowed;background:#292929;color:#c9c2b2;border-color:#4b463b}
 .packReward{margin:0 0 14px;padding:14px 16px;background:#171717;color:#f5f1e8;border-radius:14px;line-height:1.45}
 .packReward strong{color:#f3c842}
-@media(max-width:520px){.ddPredictionModes{gap:5px}.ddPredictionModes button{font-size:10px;padding:8px 3px}.ddPredictionModes small{font-size:9px}.raceTrackV6{height:286px!important}.runnerToken{left:43%!important;width:51px!important;height:27px!important}.runnerName{width:36%!important;max-width:36%!important;font-size:7px!important}.raceFinishV6{right:7px!important}.musicVisual{min-height:230px!important}}
+@media(max-width:520px){.raceTrackV6{height:286px!important}.runnerToken{left:43%!important;width:51px!important;height:27px!important}.runnerName{width:36%!important;max-width:36%!important;font-size:7px!important}.raceFinishV6{right:7px!important}.musicVisual{min-height:230px!important}}
 </style>
 
 
@@ -370,19 +370,9 @@
 #race #simulate:disabled{opacity:.65}
 #custom-kennel .ddBuilder{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)!important;align-items:start!important}
 #custom-kennel .ddDogStage{min-height:0!important;aspect-ratio:16/9;background:radial-gradient(ellipse at 50% 55%,#302d26,#121212 70%);border:1px solid #484233;border-radius:18px;padding:12px;overflow:hidden}
-#custom-kennel .ddRealDogPreview{position:relative;width:100%;aspect-ratio:2/1;min-height:0;display:block;overflow:hidden}
-#custom-kennel .ddRealDogPreview img{position:absolute;inset:0;display:block;width:100%;height:100%;max-height:none;object-fit:contain;filter:drop-shadow(0 10px 8px #0008)}
-#custom-kennel .ddRealDogPreview svg{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:block;width:100%;height:auto;max-height:100%;aspect-ratio:2/1;overflow:hidden;pointer-events:none}
-.ddPredictionModes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0 12px}
-.ddPredictionModes button{border:1px solid #514a38;border-radius:12px;padding:10px 6px;background:#1b1b19;color:#f4efe4;font-weight:900;font-size:11px;letter-spacing:.06em;cursor:pointer}
-.ddPredictionModes button[aria-pressed="true"]{background:#f3c842;color:#171717;border-color:#f3c842}
-.ddPredictionModes small{display:block;margin-top:4px;font-size:10px;font-weight:600;letter-spacing:0;opacity:.8}
-.ddFinalResults{margin:14px 0;padding:14px;border:1px solid #4a463b;border-radius:16px;background:#121313;color:#f6f1e6}
-.ddFinalResults h3{margin:0 0 10px;color:#f3c842;font-size:12px;letter-spacing:.16em}
-.ddResultRow{display:flex;align-items:center;gap:10px;padding:8px 2px;border-top:1px solid #34332e;font-size:13px}
-.ddResultRank{display:grid;place-items:center;width:25px;height:25px;flex:0 0 25px;border-radius:50%;background:#292820;color:#f3c842;font-weight:900}
-.ddResultDog{flex:1;min-width:0;overflow-wrap:anywhere;font-weight:700}
-.ddResultRow strong{font-variant-numeric:tabular-nums;color:#e8dfcd}
+#custom-kennel .ddRealDogPreview{position:relative;width:100%;height:100%;min-height:180px;display:flex;align-items:center;justify-content:center}
+#custom-kennel .ddRealDogPreview img{display:block;width:100%;height:auto;max-height:300px;object-fit:contain;filter:drop-shadow(0 10px 8px #0008)}
+#custom-kennel .ddRealDogPreview svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
 #custom-kennel .ddControls{min-width:0}
 #custom-kennel .ddDogStage .ddDogNamePlate{position:absolute;bottom:4px;left:0;right:0;text-align:center;color:#f3c842;font-size:12px;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
 #custom-kennel .ddSwatches{display:flex;flex-wrap:wrap;gap:9px}
@@ -397,8 +387,7 @@
  #race .racePickV6 strong{font-size:11px!important}
  #ddBroadcastCanvas{aspect-ratio:4/5}
  #custom-kennel .ddBuilder{grid-template-columns:minmax(0,1fr)!important}
- #custom-kennel .ddRealDogPreview{min-height:0;aspect-ratio:2/1}
- #custom-kennel .ddRealDogPreview svg{width:100%;height:auto;max-height:100%}
+ #custom-kennel .ddRealDogPreview{min-height:160px}
 }
 @media(prefers-reduced-motion:reduce){#ddBroadcastCanvas{scroll-behavior:auto}}
 </style>
@@ -581,7 +570,6 @@ const raceDogs=[{"id": 1, "name": "Red Alert", "num": "1", "style": "Front Runne
 
 let selected=null;
 const pickrow=document.getElementById('pickrow');
-const pickModeBar=document.createElement('div');pickModeBar.className='ddPredictionModes';pickModeBar.setAttribute('aria-label','Prediction type');pickModeBar.innerHTML='<button type="button" data-pick-mode="winner" aria-pressed="true">WINNER <small>1 pick</small></button><button type="button" data-pick-mode="exacta" aria-pressed="false">EXACTA <small>1st + 2nd</small></button><button type="button" data-pick-mode="trifecta" aria-pressed="false">TRIFECTA <small>1st + 2nd + 3rd</small></button>';pickrow.before(pickModeBar);
 const pickerNames=['The Bookie’s Bane','Pocket Change','Track Shark','Lucky Ledger','Bar Tab','Big Punt','The Outsider','Golden Ticket'];
 pickrow.innerHTML=raceDogs.map((d,i)=>`<button class="racePickV6" data-box="${d.id}" type="button"><img loading="lazy" decoding="async" src="${d.img}" alt="Fictional picker greyhound ${pickerNames[i]}"><span><strong>BOX ${d.num} · ${pickerNames[i]}</strong><small>${d.style}</small></span></button>`).join('');
 const setRaceMessage=(text,win)=>{document.getElementById('raceMsg').innerHTML=text;document.querySelectorAll('.racePickV6').forEach(x=>x.classList.remove('winner'));if(win)document.querySelector(`.racePickV6[data-box="${win}"]`)?.classList.add('winner')};
@@ -696,7 +684,7 @@ document.querySelectorAll('.dropLogo').forEach(x=>x.src=logoSrc);renderProducts(
 
 /* Dog Dollars Cup: local, lightweight progression. It is not a shared online leaderboard. */
 function loadCupStats(){try{return JSON.parse(localStorage.getItem('ddCupStats')||'{"points":0,"races":0,"streak":0,"bestStreak":0,"last":""}')}catch(e){return {points:0,races:0,streak:0,bestStreak:0,last:''}}}
-function renderCupStats(){const a=loadCupStats();const p=document.getElementById('cupPoints');if(!p)return;p.textContent=a.points.toLocaleString('en-AU');document.getElementById('cupRaces').textContent=a.races;document.getElementById('cupStreak').textContent=a.streak;const tier=a.points>=2000?'Cup Legend':a.points>=800?'Track Champion':a.points>=250?'Kennel Contender':'Rookie';const next=a.points<250?250-a.points:a.points<800?800-a.points:a.points<2000?2000-a.points:0;document.getElementById('cupStatus').textContent=a.races?`Rank: ${tier}. ${next?`${next} more points to the next rank.`:'Top local rank reached!'} Personal best streak: ${a.bestStreak}. This week's Cup: ${Number(a.seasonPoints||0).toLocaleString('en-AU')} points across ${Number(a.seasonRaces||0)} races. Your record is saved on this device; global rankings are not connected yet.`:'Your first race starts your Cup record. Earn points to progress from Rookie to Kennel Contender, Track Champion and Cup Legend. Your personal record is saved on this device; global rankings are not connected yet.'}
+function renderCupStats(){const a=loadCupStats();const p=document.getElementById('cupPoints');if(!p)return;p.textContent=a.points.toLocaleString('en-AU');document.getElementById('cupRaces').textContent=a.races;document.getElementById('cupStreak').textContent=a.streak;document.getElementById('cupStatus').textContent=a.races?`Personal best streak: ${a.bestStreak}. Keep racing to improve your score.`:'Your first race will start your Cup record. Your personal record is saved on this device. Global rankings are planned for a later update.'}
 function awardCupResult(correct,dog){const a=loadCupStats();a.races+=1;a.points+=correct?110:10;a.streak=correct?a.streak+1:0;a.bestStreak=Math.max(a.bestStreak,a.streak);a.last=new Date().toISOString().slice(0,10);try{localStorage.setItem('ddCupStats',JSON.stringify(a))}catch(e){}renderCupStats();if(typeof renderPack==='function')renderPack();}
 function loadCollection(){try{return JSON.parse(localStorage.getItem('ddPackCards')||'[]')}catch(e){return []}}
 function saveCollection(a){try{localStorage.setItem('ddPackCards',JSON.stringify(a))}catch(e){}}
@@ -1089,7 +1077,7 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
  if(runners.length!==8)runners=namesFallback.map((name,i)=>({id:i+1,name,num:String(i+1),style:'Cup runner',color:colors[i]}));
  runners=runners.map((d,i)=>({...d,num:String(d.num||i+1),name:d.name||namesFallback[i],style:d.style||'Cup runner',vest:colors[i]}));
 
- let chosen=0,pickMode='winner',predictions=[0,null,null],running=false,raceFinished=false,raf=0,lastFrame=0,startTime=0,finishOrder=[],speeds=[],particles=[],soundOn=true,audioCtx=null,crowdSource=null,crowdGain=null;
+ let chosen=0,running=false,raf=0,lastFrame=0,startTime=0,finishOrder=[],speeds=[],particles=[],soundOn=true,audioCtx=null,crowdSource=null,crowdGain=null;
  const coatCache=new Map();
  function tintedSprite(coat){if(!coat||!sprite.complete||!sprite.naturalWidth)return sprite;if(coatCache.has(coat))return coatCache.get(coat);const c=document.createElement('canvas');c.width=1200;c.height=600;const q=c.getContext('2d');q.drawImage(sprite,0,0,1200,600);q.globalCompositeOperation='source-atop';q.globalAlpha=.32;q.fillStyle=coat;q.fillRect(0,0,c.width,c.height);q.globalCompositeOperation='source-over';coatCache.set(coat,c);return c;}
  let canvas=document.createElement('canvas');canvas.id='ddBroadcastCanvas';canvas.setAttribute('role','img');canvas.setAttribute('aria-label','Animated Dog Dollars Cup with eight racing greyhounds');
@@ -1112,10 +1100,26 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    runners[i]={...runners[i],name:d.name||runners[i].name,style:'Custom greyhound',custom:true,customState:d};
  }
  applyActiveCustom();
+ // Live bridge: the creator publishes changes immediately, without requiring a separate "Use Dog" click.
+ window.addEventListener('ddCustomDogChanged', event=>{
+   if(running)return; // never change a runner underneath an active race
+   const d=event.detail;
+   if(!d || !d.name)return;
+   try{localStorage.setItem('ddActiveCustomDog',JSON.stringify(d))}catch(e){}
+   const i=Math.max(0,Math.min(7,Number(d.num||7)-1));
+   runners[i]={...runners[i],name:d.name,num:String(d.num||i+1),style:'Your custom greyhound',custom:true,customState:d,coat:d.coat,vest:d.vest,pattern:d.pattern};
+   chosen=i;
+   buildPicks();
+   draw(0);
+ });
+ window.addEventListener('storage',event=>{
+   if(event.key!=='ddActiveCustomDog'||running)return;
+   applyActiveCustom();buildPicks();draw(0);
+ });
 
  function sizeCanvas(){
    const w=Math.max(320,track.clientWidth||900), mobile=w<560;
-   const ratio=mobile?1.05:0.5625;
+   const ratio=mobile?1.25:0.5625;
    canvas.width=Math.round(w*2);canvas.height=Math.round(w*ratio*2);
    canvas.style.aspectRatio=mobile?'4 / 5':'16 / 9';
    ctx.setTransform(2,0,0,2,0,0);
@@ -1155,7 +1159,7 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
  }
  function dogVest(ctx,x,y,dog,w,h,idx,t){
    const s=dog.customState||{};
-   const vest=s.jersey||colors[idx]||'#c92a21';
+   const vest=s.jersey||s.vest||colors[idx]||'#c92a21';
    // Overlay on the vest area of the realistic dog cutout.
    ctx.save();ctx.translate(x,y);ctx.scale(w/1200,h/600);
    ctx.beginPath();ctx.moveTo(510,180);ctx.lineTo(610,160);ctx.lineTo(735,190);ctx.lineTo(820,270);ctx.lineTo(790,335);ctx.lineTo(690,365);ctx.lineTo(555,300);ctx.closePath();
@@ -1166,29 +1170,18 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    if(s.pattern==='diagonal'){ctx.strokeStyle='#f5f1e7';ctx.lineWidth=17;ctx.beginPath();ctx.moveTo(555,195);ctx.lineTo(700,330);ctx.moveTo(610,178);ctx.lineTo(755,300);ctx.stroke()}
    if(s.pattern==='gold'){ctx.strokeStyle='#f5d05b';ctx.lineWidth=19;ctx.beginPath();ctx.moveTo(560,230);ctx.lineTo(665,315);ctx.lineTo(770,220);ctx.stroke()}
    ctx.fillStyle='#fff';ctx.font='900 58px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.strokeStyle='#111';ctx.lineWidth=4;ctx.strokeText(String(dog.num||idx+1),675,265);ctx.fillText(String(dog.num||idx+1),675,265);
-   // Natural, low-profile styling placed on the same 1200×600 artwork coordinates.
-   if(s.hair==='crest'){
-     ctx.fillStyle=s.coat||'#75604b';ctx.globalAlpha=.9;ctx.beginPath();
-     ctx.moveTo(972,142);ctx.quadraticCurveTo(985,127,1000,130);ctx.quadraticCurveTo(1014,131,1027,145);
-     ctx.quadraticCurveTo(1008,139,996,143);ctx.quadraticCurveTo(983,147,972,142);ctx.closePath();ctx.fill();ctx.globalAlpha=1;
-     ctx.strokeStyle='rgba(20,18,16,.42)';ctx.lineWidth=3;ctx.stroke();
-   }
-   // Small coat markings are clipped to the dog's torso, rather than floating away from it.
-   if(s.marking && s.marking!=='none'){
-     ctx.save();ctx.beginPath();ctx.moveTo(355,205);ctx.quadraticCurveTo(450,150,565,185);ctx.lineTo(555,300);ctx.quadraticCurveTo(450,340,360,285);ctx.closePath();ctx.clip();
-     ctx.globalAlpha=.72;ctx.fillStyle='#eee9df';
-     if(s.marking==='patch') {ctx.beginPath();ctx.ellipse(445,230,38,23,-.35,0,Math.PI*2);ctx.fill()}
-     if(s.marking==='blaze') {ctx.beginPath();ctx.moveTo(470,190);ctx.lineTo(488,190);ctx.lineTo(475,262);ctx.lineTo(457,258);ctx.closePath();ctx.fill()}
-     if(s.marking==='socks') {ctx.fillRect(370,270,45,45);ctx.fillRect(490,275,42,45)}
-     ctx.restore();ctx.globalAlpha=1;
-   }
-   if(s.accessory==='collar'||s.accessory==='tag'){
-     ctx.strokeStyle='#e9c34e';ctx.lineWidth=10;ctx.beginPath();ctx.moveTo(900,203);ctx.quadraticCurveTo(927,221,948,232);ctx.stroke();
-     if(s.accessory==='tag'){ctx.fillStyle='#f3c842';ctx.beginPath();ctx.arc(942,237,9,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#171717';ctx.lineWidth=2;ctx.stroke()}
-   }
-   if(s.accessory==='bandana'){
-     ctx.fillStyle=vest;ctx.strokeStyle=s.trim||'#f5d05b';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(894,198);ctx.lineTo(932,213);ctx.lineTo(918,241);ctx.closePath();ctx.fill();ctx.stroke();
-   }
+   // Fun crest/collar/accessory overlays, kept subtle on the realistic dog.
+   if(s.hair==='crest'||s.hair==='mohawk'||s.hair==='spikes'){ctx.fillStyle=s.coat||'#75604b';ctx.beginPath();ctx.moveTo(1004,132);ctx.quadraticCurveTo(1020,111,1041,119);ctx.quadraticCurveTo(1059,119,1078,139);ctx.quadraticCurveTo(1054,130,1037,135);ctx.quadraticCurveTo(1020,136,1004,132);ctx.closePath();ctx.globalAlpha=.82;ctx.fill();ctx.globalAlpha=1;ctx.strokeStyle='rgba(20,18,16,.65)';ctx.lineWidth=4;ctx.stroke()}
+   if(s.accessory==='collar'||s.accessory==='tag'){ctx.strokeStyle='#e9c34e';ctx.lineWidth=16;ctx.beginPath();ctx.moveTo(925,210);ctx.lineTo(1000,260);ctx.stroke();if(s.accessory==='tag'){ctx.fillStyle='#f3c842';ctx.beginPath();ctx.arc(975,267,14,0,Math.PI*2);ctx.fill()}}
+   ctx.restore();
+ }
+ function drawDogMarkings(x,y,w,h,dog){
+   const s=dog.customState||{}; if(!s.marking||s.marking==='none')return;
+   ctx.save();ctx.translate(x,y);ctx.scale(w/1200,h/600);
+   if(s.marking==='blaze'){ctx.fillStyle='#f3efe4';ctx.globalAlpha=.9;ctx.beginPath();ctx.moveTo(994,124);ctx.quadraticCurveTo(1015,136,1020,160);ctx.lineTo(1007,188);ctx.lineTo(993,170);ctx.closePath();ctx.fill()}
+   if(s.marking==='socks'){ctx.fillStyle='#f3efe4';ctx.globalAlpha=.94;[[180,468,46,39],[342,442,42,39],[790,444,43,36]].forEach(([a,b,c,d])=>{ctx.beginPath();ctx.ellipse(a+c/2,b+d/2,c/2,d/2,0,0,Math.PI*2);ctx.fill()})}
+   if(s.marking==='patch'){ctx.fillStyle='#eee9df';ctx.globalAlpha=.82;ctx.beginPath();ctx.moveTo(330,170);ctx.quadraticCurveTo(385,142,427,183);ctx.lineTo(404,231);ctx.quadraticCurveTo(360,230,333,204);ctx.closePath();ctx.fill()}
+   if(s.marking==='brindle'){ctx.strokeStyle='#211c18';ctx.globalAlpha=.48;ctx.lineWidth=13;ctx.lineCap='round';ctx.beginPath();[[285,145,309,194],[317,133,339,180],[351,138,372,180],[393,128,414,168],[432,140,452,174],[467,139,485,174]].forEach(([a,b,c,d])=>{ctx.moveTo(a,b);ctx.lineTo(c,d)});ctx.stroke()}
    ctx.restore();
  }
  function drawDog(x,y,dog,idx,t,scale=1){
@@ -1201,6 +1194,7 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
      ctx.globalAlpha=.98;
      ctx.drawImage(art,x,y-h*.5,w,h);
      ctx.restore();
+     drawDogMarkings(x,y-h*.5,dog,w,h);
      dogVest(ctx,x,y-h*.5,dog,w,h,idx,t);
    }else{
      ctx.fillStyle=colors[idx];rr(x,y-16,w,32,14,colors[idx],'#f5f1e7');ctx.fillStyle='#fff';ctx.font='900 18px system-ui';ctx.fillText(String(idx+1),x+w*.55,y);
@@ -1218,7 +1212,7 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    const elapsed=running?(now-startTime)/1000:0;
    const maxX=geo.finishX-82;
    runners.forEach((dog,i)=>{
-     const progress=raceFinished?1:(running?Math.min(1,progressAt(i,elapsed)):0.015);
+     const progress=running?Math.min(1,progressAt(i,elapsed)):0.015;
      const x=38+(maxX-38)*progress;
      const y=geo.trackY+geo.laneH*(i+.5)+Math.sin((running?elapsed:0)*17+i)* (running?2.8:0);
      drawDog(x,y,dog,i,t,Math.min(1,geo.laneH/72));
@@ -1227,76 +1221,37 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    if(particles.length){particles=particles.filter(p=>p.life>0);particles.forEach(p=>{p.x+=p.vx*.016;p.y+=p.vy*.016;p.life-=.016;ctx.globalAlpha=Math.max(0,p.life*2);ctx.fillStyle='#d8b184';ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()});ctx.globalAlpha=1}
    if(running){ctx.fillStyle='#f3c842';ctx.font='900 12px system-ui';ctx.textAlign='left';ctx.fillText('LIVE RACE  ·  '+(elapsed.toFixed(1))+'s',w*.05,geo.trackY-13);liveCommentary(elapsed)}
  }
- const runnerProfiles=[];
- const crossedAt=new Set();
  function progressAt(i,elapsed){
    const result=finishOrder.find(x=>x.i===i);
    const total=result?.time||9;
-   if(elapsed>=total)return 1;
    const p=Math.max(0,Math.min(1,elapsed/total));
-   const profile=runnerProfiles[i]||{style:1,burst:.02,delay:0};
-   // Different stride profiles create visible early leaders, mid-race challenges and late closers.
-   const adjusted=Math.max(0,Math.min(1,(p-profile.delay)/(1-profile.delay)));
-   const shaped=Math.pow(adjusted,profile.style);
-   const surgeWindow=Math.max(0,(p-.52)/.48);
-   const surge=Math.sin((p*8.7)+profile.phase)*profile.burst*surgeWindow;
-   return Math.max(0,Math.min(.995,shaped+surge));
+   // Short launch, then a sustained run with small, readable surges. Each dog has a distinct finish time.
+   const launch=Math.min(1,p/.16);
+   const base=p<.16 ? .055*launch*launch : .055+(.945*((p-.16)/.84));
+   const surge=p>.52?Math.sin(p*11+i*1.83)*.012:Math.sin(p*7+i)*.004;
+   return Math.max(0,Math.min(1,base+surge));
  }
  function chooseFinishOrder(){
-   // Every runner gets a distinct, stable performance profile for this race.
-   const strengths=runners.map((dog,i)=>({i,seed:Math.random(),style:.72+Math.random()*.82,delay:.015+Math.random()*.09,burst:.012+Math.random()*.045,phase:Math.random()*Math.PI*2}));
-   const order=[...strengths].sort((a,b)=>a.seed-b.seed);
-   // Separated finish times keep the result legible. The eventual winner is a late closer while second is a fast starter, so every race has a visible lead change.
-   finishOrder=order.map((p,rank)=>({i:p.i,time:6.0+rank*.78+Math.random()*.20})).sort((a,b)=>a.time-b.time);
+   // Shuffle the field, then assign separated finish times so the runners do not bunch at the line.
+   const order=runners.map((dog,i)=>i).sort(()=>Math.random()-.5);
+   finishOrder=order.map((i,rank)=>({i,time:5.9+rank*.72+Math.random()*.16})).sort((a,b)=>a.time-b.time);
    finishOrder.forEach((x,rank)=>{x.rank=rank+1});
-   runnerProfiles.length=0;
-   finishOrder.forEach((f,rank)=>{
-     const base=strengths[f.i];
-     runnerProfiles[f.i]=rank===0?{...base,style:1.22,delay:.06,burst:0,phase:Math.random()*Math.PI*2}
-       :rank===1?{...base,style:.58,delay:0,burst:0,phase:Math.random()*Math.PI*2}
-       :{...base,style:.76+Math.random()*.9,delay:.01+Math.random()*.085,burst:.012+Math.random()*.04,phase:Math.random()*Math.PI*2};
-   });
-   crossedAt.clear();
+   speeds=Array(8).fill(0);
  }
  function resize(){sizeCanvas()}
  window.addEventListener('resize',resize,{passive:true});
  if(typeof ResizeObserver!=='undefined')new ResizeObserver(resize).observe(track);
- function updatePickDisplay(){
-   pickModeBar.querySelectorAll('button').forEach(b=>{b.setAttribute('aria-pressed',String(b.dataset.pickMode===pickMode));b.disabled=running});
-   const labels=pickMode==='winner'?['YOUR PICK']:pickMode==='exacta'?['1ST','2ND']:['1ST','2ND','3RD'];
-   pickrow.querySelectorAll('.racePickV6').forEach((b,j)=>{
-     b.classList.toggle('selected',predictions[0]===j);
-     b.classList.toggle('pickedPodium',predictions.includes(j));
-     b.setAttribute('aria-pressed',String(predictions.includes(j)));
-     b.querySelectorAll('.ddPickBadge').forEach(n=>n.remove());
-     const slot=predictions.indexOf(j);
-     if(slot>=0){const badge=document.createElement('span');badge.className='ddPickBadge';badge.textContent=labels[slot]||'PICK';b.appendChild(badge)}
-   });
-   const chosenNames=predictions.map(i=>i==null?null:runners[i]?.name);
-   if($('raceMsg')){
-     if(pickMode==='winner')$('raceMsg').textContent=`Your pick: Box ${chosen+1} · ${runners[chosen].name}. Run the race to see who takes the Cup.`;
-     else $('raceMsg').textContent=`${pickMode==='exacta'?'Exacta':'Trifecta'} picks: ${chosenNames.filter(Boolean).join(' → ')}. ${predictions.slice(0,pickMode==='exacta'?2:3).some(x=>x==null)?'Choose the remaining dog(s) in finishing order.':'Picks locked in — run the Cup!'}`;
-   }
- }
  function choose(i){
    if(running)return;
-   if(pickMode==='winner')predictions=[i,null,null];
-   else{
-     const count=pickMode==='exacta'?2:3;
-     const existing=predictions.slice(0,count).indexOf(i);
-     if(existing>=0){for(let j=existing;j<count;j++)predictions[j]=null;}
-     else{const next=predictions.slice(0,count).findIndex(x=>x==null);if(next>=0)predictions[next]=i;}
-   }
-   chosen=predictions[0]??0;
-   updatePickDisplay();
+   chosen=i;
+   pickrow.querySelectorAll('.racePickV6').forEach((b,j)=>{b.classList.toggle('selected',i===j);b.setAttribute('aria-pressed',String(i===j));const badge=b.querySelector('.ddPickBadge');if(badge)badge.remove()});
+   const b=pickrow.querySelectorAll('.racePickV6')[i];if(b){const badge=document.createElement('span');badge.className='ddPickBadge';badge.textContent='YOUR PICK';b.appendChild(badge)}
+   if($('raceMsg'))$('raceMsg').textContent=`Your pick: Box ${i+1} · ${runners[i].name}. Run the race to see who takes the Cup.`;
  }
- pickModeBar.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
-   if(running)return;pickMode=b.dataset.pickMode;predictions=[chosen,null,null];updatePickDisplay();
- }));
  function buildPicks(){
-   pickrow.innerHTML=runners.map((d,i)=>`<button type="button" class="racePickV6" data-box="${i+1}" aria-pressed="${predictions.includes(i)?'true':'false'}"><img src="${spriteSrc}" alt=""><span><strong>BOX ${i+1} · ${escapeHTML(d.name)}</strong><small>${escapeHTML(d.style)}</small></span></button>`).join('');
+   pickrow.innerHTML=runners.map((d,i)=>`<button type="button" class="racePickV6" data-box="${i+1}" aria-pressed="${i===chosen?'true':'false'}"><img src="${spriteSrc}" alt=""><span><strong>BOX ${i+1} · ${escapeHTML(d.name)}</strong><small>${escapeHTML(d.style)}</small></span></button>`).join('');
    pickrow.querySelectorAll('.racePickV6').forEach((b,i)=>b.addEventListener('click',()=>choose(i)));
-   updatePickDisplay();
+   choose(chosen);
  }
  function escapeHTML(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
  function audio(){if(!soundOn)return null;if(!audioCtx){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;audioCtx=new AC()}if(audioCtx.state==='suspended')audioCtx.resume();return audioCtx}
@@ -1324,89 +1279,62 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
      const voices=speechSynthesis.getVoices();
      const preferred=voices.find(v=>/^en-AU$/i.test(v.lang))||voices.find(v=>/^en-GB$/i.test(v.lang))||voices.find(v=>/^en/i.test(v.lang));
      if(preferred)u.voice=preferred;
-     u.rate=opts.rate||1.13;u.pitch=opts.pitch||.94;u.volume=.95;
+     u.rate=opts.rate||0.96;u.pitch=opts.pitch||0.88;u.volume=.92;
      speechSynthesis.speak(u);
    }catch(e){}
  }
- let lastLiveOrder=[],lastCallAt=0,lastLeaderName='',commentaryQueue=[],winnerCallSpoken=false;
  function liveCommentary(elapsed){
-   if(!soundOn||!('speechSynthesis'in window))return;
-   const order=runners.map((dog,i)=>({dog,i,p:progressAt(i,elapsed),time:finishOrder.find(x=>x.i===i)?.time||9}))
-     .sort((a,b)=>b.p-a.p);
-   if(order.length<2)return;
-   const leader=order[0],second=order[1];
-   // Announce each real line crossing once, using the same finish-time order as the race result.
-   for(const f of finishOrder){
-     if(elapsed>=f.time&&!crossedAt.has(f.i)){
-       crossedAt.add(f.i);
-       const rank=f.rank||finishOrder.findIndex(x=>x.i===f.i)+1;
-       const d=runners[f.i];
-       if(rank===1) commentaryQueue.push({text:`${d.name} hits the line first! ${d.name} wins the Dog Dollars Cup!`,rate:1.18});
-       else if(rank===2) commentaryQueue.push({text:`${d.name} crosses in second, chasing hard all the way!`,rate:1.12});
-       else if(rank===3) commentaryQueue.push({text:`${d.name} takes third place.`,rate:1.08});
-       break;
-     }
-   }
-   if(speechSynthesis.speaking)return;
-   if(commentaryQueue.length){const next=commentaryQueue.shift();if(next.text.includes('wins the Dog Dollars Cup'))winnerCallSpoken=true;speak(next.text,{rate:next.rate||1.1});return;}
-   if(elapsed-lastCallAt<1.65)return;
+   if(!soundOn||!('speechSynthesis'in window)||speechSynthesis.speaking)return;
+   const order=runners.map((dog,i)=>({dog,i,p:progressAt(i,elapsed),time:finishOrder.find(x=>x.i===i)?.time||9})).sort((a,b)=>b.p-a.p);
+   if(!order.length)return;
+   const leader=order[0], second=order[1], sec=Math.floor(elapsed);
+   if(sec===commentaryLastSecond || elapsed-lastCommentAt<2.15)return;
+   commentaryLastSecond=sec;lastCommentAt=elapsed;
    let line='';
-   const oldLeader=lastLiveOrder[0];
-   const gainedLead=oldLeader&&oldLeader.i!==leader.i;
-   if(elapsed<1.4) line=`Good start by ${leader.dog.name}! ${second.dog.name} is right there in second.`;
-   else if(gainedLead) line=`A change at the front! ${leader.dog.name} has taken the lead from ${oldLeader.dog.name}!`;
-   else if(elapsed<3.4) line=`${leader.dog.name} shows the way, with ${second.dog.name} pressing hard!`;
-   else if(elapsed<5.2) line=`${second.dog.name} is closing in! ${leader.dog.name} has to lift!`;
-   else if(elapsed<7.2) line=`Into the home straight! ${leader.dog.name} in front, ${second.dog.name} is coming after them!`;
-   else line=`They drive for the line! ${leader.dog.name} and ${second.dog.name} are fighting it out!`;
-   if(leader.dog.name===lastLeaderName && !gainedLead && elapsed>2) line=`${leader.dog.name} keeps finding more! ${second.dog.name} is trying to reel them in!`;
-   lastLeaderName=leader.dog.name;lastLiveOrder=order;lastCallAt=elapsed;
-   speak(line,{rate:elapsed>5?1.2:1.12,pitch:.92});
+   // Short, varied race-call lines using the actual current running order.
+   if(elapsed<2.2) line=`And away they go! ${leader.dog.name} has jumped out well, with ${second.dog.name} right on its heels.`;
+   else if(elapsed<4.3) line=`${leader.dog.name} is travelling nicely out in front. ${second.dog.name} is giving chase.`;
+   else if(elapsed<6.2) line=`They are starting to wind it up now. ${second.dog.name} is coming after ${leader.dog.name}.`;
+   else if(leader.p>.82) line=`Into the final stretch! ${leader.dog.name} in front, ${second.dog.name} is chasing!`;
+   else line=`They are bunching up! ${leader.dog.name}, ${second.dog.name} and the rest are racing for the line!`;
+   // Avoid repeating the same leader call several times in a row.
+   if(leader.i===commentaryLastLeader && elapsed<5.5) line=`Still ${leader.dog.name} in front, and ${second.dog.name} has not given up yet.`;
+   commentaryLastLeader=leader.i;
+   speak(line);
  }
 
  function updateStats(winnerIdx){
    let stats={points:0,races:0,streak:0,bestStreak:0,last:''};
    try{stats={...stats,...JSON.parse(localStorage.getItem('ddCupStats')||'{}')}}catch(e){}
-   const actual=finishOrder.map(x=>x.i);
-   const winnerCorrect=predictions[0]===actual[0];
-   const exactaCorrect=predictions[0]===actual[0]&&predictions[1]===actual[1];
-   const trifectaCorrect=exactaCorrect&&predictions[2]===actual[2];
-   const correct=pickMode==='winner'?winnerCorrect:pickMode==='exacta'?exactaCorrect:trifectaCorrect;
-   let pointsEarned=10;
-   if(pickMode==='winner'&&winnerCorrect)pointsEarned=110;
-   if(pickMode==='exacta')pointsEarned=exactaCorrect?250:winnerCorrect?110:10;
-   if(pickMode==='trifecta')pointsEarned=trifectaCorrect?500:exactaCorrect?250:winnerCorrect?110:10;
-   const nowDate=new Date();const utcDay=new Date(Date.UTC(nowDate.getFullYear(),nowDate.getMonth(),nowDate.getDate()));utcDay.setUTCDate(utcDay.getUTCDate()+4-(utcDay.getUTCDay()||7));const seasonYear=utcDay.getUTCFullYear();const seasonWeek=Math.ceil((((utcDay-new Date(Date.UTC(seasonYear,0,1)))/86400000)+1)/7);const seasonKey=`${seasonYear}-W${String(seasonWeek).padStart(2,'0')}`;if(stats.seasonWeek!==seasonKey){stats.seasonWeek=seasonKey;stats.seasonPoints=0;stats.seasonRaces=0;}stats.seasonPoints=Number(stats.seasonPoints||0)+pointsEarned;stats.seasonRaces=Number(stats.seasonRaces||0)+1;stats.races=Number(stats.races||0)+1;stats.points=Number(stats.points||0)+pointsEarned;
-   stats.wins=Number(stats.wins||0)+(winnerCorrect?1:0);
-   stats.streak=winnerCorrect?Number(stats.streak||0)+1:0;
-   stats.bestStreak=Math.max(Number(stats.bestStreak||0),stats.streak);stats.last=new Date().toISOString().slice(0,10);
+   stats.races=Number(stats.races||0)+1;
+   const correct=winnerIdx===chosen;
+   stats.points=Number(stats.points||0)+(correct?110:10);
+   stats.streak=correct?Number(stats.streak||0)+1:0;
+   stats.bestStreak=Math.max(Number(stats.bestStreak||0),stats.streak);
+   stats.last=new Date().toISOString().slice(0,10);
    try{localStorage.setItem('ddCupStats',JSON.stringify(stats))}catch(e){}
    if(typeof renderCupStats==='function')try{renderCupStats()}catch(e){}
    const winner=runners[winnerIdx];
    let history=[];try{history=JSON.parse(localStorage.getItem('dogDollarsRaceHistory')||'[]')}catch(e){}
-   history.unshift({name:winner.name,num:winner.num,position:1,when:stats.last,pick:runners[chosen].name,correct,mode:pickMode,pointsEarned});
+   history.unshift({name:winner.name,num:winner.num,position:1,when:stats.last,pick:runners[chosen].name,correct});
    try{localStorage.setItem('dogDollarsRaceHistory',JSON.stringify(history.slice(0,10)))}catch(e){}
    if(typeof renderRaceHistory==='function')try{renderRaceHistory()}catch(e){}
    if(typeof renderPack==='function')try{renderPack()}catch(e){}
-   return {correct,winnerCorrect,exactaCorrect,trifectaCorrect,pointsEarned,stats,winner};
+   return {correct,stats,winner};
  }
  function endRace(){
-   if(!running)return;running=false;raceFinished=true;cancelAnimationFrame(raf);raf=0;
-   if(!winnerCallSpoken){commentaryQueue=[];const w=runners[finishOrder[0]?.i??0];speak(`${w.name} hits the line first! ${w.name} wins the Dog Dollars Cup!`,{force:true,rate:1.18});winnerCallSpoken=true;}
+   running=false;cancelAnimationFrame(raf);raf=0;
    const winner=finishOrder[0].i,results=finishOrder.map((x,rank)=>({...x,dog:runners[x.i],rank:rank+1}));
-   lastCommentAt=0;commentaryLastLeader=-1;commentaryLastSecond=-1;lastCallAt=0;lastLiveOrder=[];lastLeaderName='';commentaryQueue=[];crossedAt.clear();
+   lastCommentAt=0;commentaryLastLeader=-1;commentaryLastSecond=-1;
    $('ddBroadcastState').textContent='FINISHED';
    $('raceTimer').textContent='FINISHED';
    const res=updateStats(winner);
    pickrow.querySelectorAll('.racePickV6').forEach((b,i)=>{b.classList.toggle('winner',i===winner);b.classList.remove('selected');if(i===winner){const badge=document.createElement('span');badge.className='ddPickBadge';badge.textContent='WINNER';b.appendChild(badge)}});
-   run.disabled=false;run.textContent='Run the race again';pickrow.querySelectorAll('button').forEach(b=>b.disabled=false);pickModeBar.querySelectorAll('button').forEach(b=>b.disabled=false);
-   const reward=pickMode==='trifecta'&&res.trifectaCorrect?'Trifecta! First three in order — 500 Cup points!':pickMode!=='winner'&&res.exactaCorrect?'Exacta! First and second in order — 250 Cup points!':res.winnerCorrect?`You picked the winner — ${res.pointsEarned} Cup points!`:`You earn ${res.pointsEarned} participation points.`;
-   const msg=`🏁 ${res.winner.name} wins the Dog Dollars Cup! ${reward}`;
+   run.disabled=false;run.textContent='Run the race again';
+   const msg=`🏁 ${res.winner.name} wins the Dog Dollars Cup! ${res.correct?'You picked the winner — 110 Cup points!':'You picked '+runners[chosen].name+'. You earn 10 participation points.'}`;
    $('raceMsg').textContent=msg;
-   let resultsPanel=$('ddFinalResults');
-   if(!resultsPanel){resultsPanel=document.createElement('section');resultsPanel.id='ddFinalResults';resultsPanel.className='ddFinalResults';resultsPanel.setAttribute('aria-live','polite');$('raceMsg').insertAdjacentElement('afterend',resultsPanel)}
-   resultsPanel.innerHTML='<h3>OFFICIAL CUP RESULTS</h3>'+finishOrder.map((f,i)=>`<div class="ddResultRow"><span class="ddResultRank">${i+1}</span><span class="ddResultDog">BOX ${f.i+1} · ${escapeHTML(runners[f.i].name)}</span><strong>${f.time.toFixed(2)}s</strong></div>`).join('');
    if($('raceExtras'))$('raceExtras').style.display='flex';
+   speak(`And it's ${res.winner.name} at the line! ${res.winner.name} wins the Dog Dollars Cup! ${res.correct?'You called it! One hundred and ten Cup points.':'Ten participation points for the race.'}`,{force:true});
    stopCrowd();
    draw(0);
  }
@@ -1420,52 +1348,73 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    raf=requestAnimationFrame(frame);
  }
  function startRace(){
-   if(running)return;raceFinished=false;winnerCallSpoken=false;commentaryQueue=[];
-   const needed=pickMode==='winner'?1:pickMode==='exacta'?2:3;if(predictions.slice(0,needed).some(x=>x==null)){$('raceMsg').textContent=`Choose ${needed} dogs in finishing order for your ${pickMode} prediction.`;return;}
+   if(running)return;
    if(!sprite.complete||!sprite.naturalWidth){$('raceMsg').textContent='Loading the racing greyhound artwork — try again in a moment.';sprite.onload=()=>draw(0);return}
    running=true;startTime=0;lastFrame=0;particles=[];chooseFinishOrder();
    $('ddBroadcastState').textContent='LIVE';$('raceTimer').textContent='RACING';run.disabled=true;run.textContent='Race in progress…';
-   pickrow.querySelectorAll('button').forEach(b=>{b.disabled=true});pickModeBar.querySelectorAll('button').forEach(b=>b.disabled=true);
+   pickrow.querySelectorAll('button').forEach(b=>{b.disabled=true});
    if($('raceMsg'))$('raceMsg').textContent='And they’re off! Watch the field charge for the line…';
-   lastCommentAt=0;commentaryLastLeader=-1;commentaryLastSecond=-1;lastCallAt=0;lastLiveOrder=[];lastLeaderName='';commentaryQueue=[];crossedAt.clear();
+   lastCommentAt=0;commentaryLastLeader=-1;commentaryLastSecond=-1;
    bell();startCrowd();speak('They are coming into the boxes for the Dog Dollars Cup… set… and they are off!',{force:true});
    const started=performance.now();raf=requestAnimationFrame(frame);
    // Ensure a winner is not displayed until all dogs reach the finish.
-   const check=()=>{if(!running)return;const elapsed=(performance.now()-(startTime||performance.now()))/1000;const maxFinish=finishOrder.length?Math.max(...finishOrder.map(x=>x.time)):11.8;if(elapsed>=maxFinish+.15)endRace();else setTimeout(check,250)};setTimeout(check,250);
+   const check=()=>{if(!running)return;const elapsed=(performance.now()-(startTime||performance.now()))/1000;if(elapsed>10.2)endRace();else setTimeout(check,300)};setTimeout(check,10000);
  }
  run.addEventListener('click',startRace);
- if(reset)reset.addEventListener('click',()=>{if(running){running=false;cancelAnimationFrame(raf);stopCrowd();if('speechSynthesis'in window)speechSynthesis.cancel()}raceFinished=false;winnerCallSpoken=false;finishOrder=[];crossedAt.clear();lastLiveOrder=[];lastCallAt=0;commentaryQueue=[];startTime=0;pickrow.querySelectorAll('button').forEach(b=>b.disabled=false);pickModeBar.querySelectorAll('button').forEach(b=>b.disabled=false);$('ddBroadcastState').textContent='READY';$('raceTimer').textContent='READY';run.disabled=false;run.textContent='Run the race';$('raceMsg').textContent='Pick the dog you think will win, then run the Cup.';$('ddFinalResults')?.remove();draw(0)});
+ if(reset)reset.addEventListener('click',()=>{if(running){running=false;cancelAnimationFrame(raf);stopCrowd()}finishOrder=[];startTime=0;pickrow.querySelectorAll('button').forEach(b=>b.disabled=false);$('ddBroadcastState').textContent='READY';$('raceTimer').textContent='READY';run.disabled=false;run.textContent='Run the race';$('raceMsg').textContent='Pick the dog you think will win, then run the Cup.';draw(0)});
  $('ddReplayRace')?.addEventListener('click',()=>{if(running)return;startRace()});
- $('ddSoundToggle')?.addEventListener('click',()=>{soundOn=!soundOn;$('ddSoundToggle').setAttribute('aria-pressed',String(soundOn));$('ddSoundToggle').textContent=soundOn?'🔊 Sound on':'🔇 Sound off';if(!soundOn){stopCrowd();commentaryQueue=[];if('speechSynthesis'in window)speechSynthesis.cancel()}});
+ $('ddSoundToggle')?.addEventListener('click',()=>{soundOn=!soundOn;$('ddSoundToggle').setAttribute('aria-pressed',String(soundOn));$('ddSoundToggle').textContent=soundOn?'🔊 Sound on':'🔇 Sound off';if(!soundOn){stopCrowd();if('speechSynthesis'in window)speechSynthesis.cancel()}});
  // When the existing creator applies a custom dog, use that exact name/vest/number in the live game.
  $('ddUseDog')?.addEventListener('click',()=>setTimeout(()=>{applyActiveCustom();buildPicks();draw(0)},40));
- $('ddSaveDog')?.addEventListener('click',()=>setTimeout(()=>{renderRealPreview();},30));
- ['ddDogName','ddMarking','ddJerseyPattern','ddJerseyNumber','ddHairStyle','ddEarStyle','ddAccessory','ddTailStyle'].forEach(id=>$(id)?.addEventListener('input',()=>setTimeout(renderRealPreview,0)));
- ['ddCoatSwatches','ddJerseySwatches'].forEach(id=>$(id)?.addEventListener('click',()=>setTimeout(renderRealPreview,0)));
+ $('ddSaveDog')?.addEventListener('click',()=>setTimeout(syncCustomDogLive,30));
+ ['ddDogName','ddMarking','ddJerseyPattern','ddJerseyNumber','ddHairStyle','ddEarStyle','ddAccessory','ddTailStyle'].forEach(id=>$(id)?.addEventListener('input',()=>setTimeout(syncCustomDogLive,0)));
+ ['ddCoatSwatches','ddJerseySwatches'].forEach(id=>$(id)?.addEventListener('click',()=>setTimeout(syncCustomDogLive,0)));
  // Rebuild pick cards when the race names change or a custom dog is restored.
+ function syncCustomDogLive(){
+   renderRealPreview();
+   const selectedCoat=document.querySelector('#ddCoatSwatches .ddSwatch[aria-pressed="true"]');
+   const selectedVest=document.querySelector('#ddJerseySwatches .ddSwatch[aria-pressed="true"]');
+   const dog={
+     name:($('ddDogName')?.value||'Your Greyhound').trim().slice(0,24)||'Your Greyhound',
+     num:String($('ddJerseyNumber')?.value||'7'),
+     coat:selectedCoat?.dataset.col||'#75604b',
+     jersey:selectedVest?.dataset.col||'#171717',
+     vest:selectedVest?.dataset.col||'#171717',
+     trim:'#f3c842',
+     pattern:$('ddJerseyPattern')?.value||'solid',
+     markings:$('ddMarking')?.value||'none',
+     hair:$('ddHairStyle')?.value||'sleek',
+     ears:$('ddEarStyle')?.value||'natural',
+     accessory:$('ddAccessory')?.value||'none',
+     tail:$('ddTailStyle')?.value||'natural'
+   };
+   try{localStorage.setItem('ddActiveCustomDog',JSON.stringify(dog))}catch(e){}
+   window.dispatchEvent(new CustomEvent('ddCustomDogChanged',{detail:dog}));
+ }
  function renderRealPreview(){
    const stage=$('ddDogStage');if(!stage)return;
-   ['ddEarStyle','ddTailStyle'].forEach(id=>{const el=$(id);const field=el?.closest('.ddField');if(field)field.style.display='none'});
    let coat='#75604b',vest='#171717',trim='#f3c842',name=$('ddDogName')?.value||'Your Greyhound',num=$('ddJerseyNumber')?.value||'7';
    const c=document.querySelector('#ddCoatSwatches .ddSwatch[aria-pressed="true"]');if(c)coat=c.dataset.col||coat;
    const j=document.querySelector('#ddJerseySwatches .ddSwatch[aria-pressed="true"]');if(j)vest=j.dataset.col||vest;
    const pattern=$('ddJerseyPattern')?.value||'solid';
-   const hair=$('ddHairStyle')?.value||'none',accessory=$('ddAccessory')?.value||'none',marking=$('ddMarking')?.value||'none';
+   const hair=$('ddHairStyle')?.value||'sleek',accessory=$('ddAccessory')?.value||'none';
    let patternSvg='';
    if(pattern==='stripes')patternSvg='<path d="M560 180L620 340 M640 175L700 330" stroke="#f4f0e7" stroke-width="18"/>';
    if(pattern==='hoops')patternSvg='<path d="M540 240H785 M555 285H790" stroke="#f4f0e7" stroke-width="16"/>';
    if(pattern==='diagonal')patternSvg='<path d="M555 195L700 330 M610 178L755 300" stroke="#f4f0e7" stroke-width="17"/>';
    if(pattern==='gold')patternSvg='<path d="M560 230L665 315L770 220" fill="none" stroke="#f3c842" stroke-width="19"/>';
-   const coatFilters={'#242321':'brightness(.68) saturate(.65)','#66717b':'hue-rotate(165deg) saturate(.65)','#c99b6c':'sepia(.6) saturate(1.3) brightness(1.08)','#75604b':'sepia(.35) saturate(1.15)','#f3efe4':'brightness(1.45) saturate(.2)','#9a5b42':'sepia(.65) saturate(1.4) hue-rotate(330deg)','#aeb2b8':'grayscale(.55) brightness(1.18)'};
+   // Markings are layered over the photographic greyhound rather than replacing it with a cartoon.
+   const marking=$('ddMarking')?.value||'none';
+   let markingsSvg='';
+   if(marking==='blaze')markingsSvg='<path d="M1000 122 Q1017 136 1020 161 L1007 190 L993 170 Z" fill="#f3efe4" opacity=".92"/>';
+   if(marking==='socks')markingsSvg='<path d="M180 468 Q205 472 226 464 L219 506 Q197 515 175 504 Z M342 442 Q363 449 383 442 L377 485 Q357 493 338 481 Z M790 444 Q813 452 833 444 L830 482 Q810 490 790 478 Z" fill="#f3efe4" opacity=".94"/>';
+   if(marking==='patch')markingsSvg='<path d="M330 170 Q385 142 427 183 L404 231 Q360 230 333 204 Z" fill="#eee9df" opacity=".84"/>';
+   if(marking==='brindle')markingsSvg='<g fill="none" stroke="#211c18" stroke-width="13" stroke-linecap="round" opacity=".48"><path d="M285 145l24 49m8-61 22 47m12-42 21 42m10-52 21 40m9-28 20 34m15-35 18 35"/></g>';
+   const coatFilters={'#242321':'brightness(.68) saturate(.65)','#66717b':'hue-rotate(165deg) saturate(.65)','#c99b6c':'sepia(.6) saturate(1.3) brightness(1.08)','#75604b':'sepia(.35) saturate(1.15)','#eee9df':'brightness(1.45) saturate(.2)','#9b6247':'sepia(.65) saturate(1.4) hue-rotate(330deg)','#a7a9ac':'grayscale(.55) brightness(1.18)'};
    const coatFilter=coatFilters[coat]||'none';
-   const crest=hair==='crest'?'<path d="M972 142 Q985 127 1000 130 Q1014 131 1027 145 Q1008 139 996 143 Q983 147 972 142 Z" fill="'+coat+'" fill-opacity=".9" stroke="#171717" stroke-opacity=".42" stroke-width="3"/>':'';
-   let markingSvg='';
-   if(marking==='patch')markingSvg='<ellipse cx="445" cy="230" rx="38" ry="23" transform="rotate(-20 445 230)" fill="#eee9df" fill-opacity=".72"/>';
-   if(marking==='blaze')markingSvg='<path d="M470 190L488 190L475 262L457 258Z" fill="#eee9df" fill-opacity=".72"/>';
-   if(marking==='socks')markingSvg='<path d="M370 270h45v45h-45z M490 275h42v45h-42z" fill="#eee9df" fill-opacity=".72"/>';
-   if(marking==='brindle')markingSvg='<path d="M385 190l28 40m8-48 28 40m6-35 28 40m8-45 28 40" stroke="#242321" stroke-width="8" stroke-linecap="round" stroke-opacity=".62"/>';
+   const crest=hair==='crest'?'<path d="M1004 132 Q1020 111 1041 119 Q1059 119 1078 139 Q1054 130 1037 135 Q1020 136 1004 132 Z" fill="'+coat+'" fill-opacity=".82" stroke="#171717" stroke-opacity=".6" stroke-width="4"/>':'';
    const collar=accessory==='collar'||accessory==='tag'?'<path d="M925 210L1000 260" stroke="#e9c34e" stroke-width="17"/><circle cx="975" cy="267" r="13" fill="#f3c842"/>':'';
-   stage.innerHTML=`<div class="ddRealDogPreview"><img src="${spriteSrc}" style="filter:${coatFilter}" alt="Realistic greyhound wearing racing silks"><svg viewBox="0 0 1200 600" role="img" aria-label="${escapeHTML(name)} custom racing greyhound">${markingSvg}<path d="M510 180L610 160L735 190L820 270L790 335L690 365L555 300Z" fill="${vest}" fill-opacity=".88" stroke="${trim}" stroke-width="9"/>${patternSvg}<text x="675" y="265" font-size="58" font-weight="900" text-anchor="middle" fill="#fff" stroke="#111" stroke-width="4" paint-order="stroke">${escapeHTML(num)}</text>${crest}${collar}</svg><div class="ddDogNamePlate">${escapeHTML(name)} · BOX ${escapeHTML(num)}</div></div>`;
+   stage.innerHTML=`<div class="ddRealDogPreview"><img src="${spriteSrc}" style="filter:${coatFilter}" alt="Realistic greyhound wearing racing silks"><svg viewBox="0 0 1200 600" role="img" aria-label="${escapeHTML(name)} custom racing greyhound"><path d="M510 180L610 160L735 190L820 270L790 335L690 365L555 300Z" fill="${vest}" fill-opacity=".88" stroke="${trim}" stroke-width="9"/>${markingsSvg}${patternSvg}<text x="675" y="265" font-size="58" font-weight="900" text-anchor="middle" fill="#fff" stroke="#111" stroke-width="4" paint-order="stroke">${escapeHTML(num)}</text>${crest}${collar}</svg><div class="ddDogNamePlate">${escapeHTML(name)} · BOX ${escapeHTML(num)}</div></div>`;
  }
  buildPicks();sizeCanvas();sprite.onload=()=>{draw(0);renderRealPreview()};renderRealPreview();
 })();
