@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dog Dollars Cup v7 Race Fix · Dog Dollars — Fast Track Fashion</title>
+<title>Dog Dollars Cup v17 · Realistic Custom Greyhounds — Dog Dollars</title>
 <meta name="description" content="Dog Dollars — premium greyhound-racing streetwear, bar gear and free interactive racing games. Fast Track Fashion.">
 <meta name="theme-color" content="#111111">
 <meta property="og:type" content="website">
@@ -392,6 +392,24 @@
 @media(prefers-reduced-motion:reduce){#ddBroadcastCanvas{scroll-behavior:auto}}
 </style>
 
+<style id="dd-v10-custom-race-polish">
+.racePickV6 .ddPickThumb{display:block;width:52px;height:40px;flex:0 0 52px;border-radius:7px;object-fit:contain;background:#151515;border:1px solid #555;}
+#custom-kennel .ddRealDogPreview img{filter:drop-shadow(0 10px 8px #0008);}
+#custom-kennel .ddDogStage{overflow:hidden;}
+@media(max-width:520px){.racePickV6 .ddPickThumb{width:48px;height:36px;flex-basis:48px}.racePickV6{gap:7px;padding:7px}}
+</style>
+<style id="dd-v11-realistic-race-polish">
+.racePickV6 .ddPickThumb{display:block;width:52px;height:40px;flex:0 0 52px;border-radius:7px;object-fit:contain;background:#151515;border:1px solid #555}
+#custom-kennel .ddRealDogPreview img{filter:drop-shadow(0 10px 8px #0008)}
+#custom-kennel .ddDogStage{overflow:hidden}
+#custom-kennel .ddRealDogPreview svg{pointer-events:none}
+@media(max-width:520px){.racePickV6 .ddPickThumb{width:48px;height:36px;flex-basis:48px}.racePickV6{gap:7px;padding:7px}}
+</style>
+<style id="dd-v13-realistic-dog-sprite">
+#custom-kennel .ddRealDogPreview img{filter:drop-shadow(0 10px 8px #0008)}
+#custom-kennel .ddDogStage{overflow:hidden}
+@media(max-width:520px){.racePickV6 .ddPickThumb{width:48px;height:36px;flex-basis:48px}.racePickV6{gap:7px;padding:7px}}
+</style>
 </head>
 <body>
 <div class="topbar">DOG DOLLARS • FAST TRACK FASHION • NO BORING MERCH ALLOWED</div>
@@ -527,8 +545,8 @@ function renderProducts(filter='all'){
     const p=products.find(x=>x.id===+b.dataset.productId); if(!p)return;
     const side=b.dataset.productSide, img=document.querySelector(`[data-product-image="${p.id}"]`), note=document.querySelector(`[data-back-note="${p.id}"]`);
     document.querySelectorAll(`[data-product-side][data-product-id="${p.id}"]`).forEach(x=>{const on=x===b;x.classList.toggle('active',on);x.setAttribute('aria-pressed',on?'true':'false')});
-    if(side==='back' && !p.backImage){if(img)img.style.display='none';if(note)note.hidden=false;return;}
-    if(note)note.hidden=true;if(img){img.style.display='block';img.src=side==='back'?p.backImage:p.image;img.alt=p.name+(side==='back'?' back view':' front view');}
+    if(side==='back' && !p.backImage){if(img)img.hidden=true;if(note)note.hidden=false;return;}
+    if(note)note.hidden=true;if(img){img.hidden=false;img.style.display='';img.src=side==='back'?p.backImage:p.image;img.alt=p.name+(side==='back'?' back view':' front view');}
   }));
 }
 function add(id,size,colour){const p=products.find(x=>x.id===id);const key=`${id}|${size}|${colour}`;const e=cart.find(x=>x.key===key);if(e)e.qty++;else cart.push({key,id,qty:1,size,colour});renderCart();openCart()}
@@ -696,8 +714,8 @@ function renderPack(){const box=document.getElementById('packCards');if(!box||!A
   const secretNote=document.getElementById('secretCardNote');if(isGoldenDogUnlocked()){secretNote.hidden=false;secretNote.textContent='🏆 Secret found: The Golden Ghost has joined your pack.'}else{secretNote.hidden=true;}
 }
 let silksMain='#c92a21',silksTrim='#f3c842';
-function makeSilksSvg(){const pattern=document.getElementById('silksPattern')?.value||'solid';const num=document.getElementById('silksNumber')?.value||'7';let details='';if(pattern==='stripes')details=`<path d="M125 55 L95 213 M160 52 L130 213" stroke="${silksTrim}" stroke-width="16"/>`;if(pattern==='diagonal')details=`<path d="M70 86 L135 151 M89 65 L159 135 M108 56 L176 124" stroke="${silksTrim}" stroke-width="13"/>`;if(pattern==='hoops')details=`<path d="M88 122 H166 M86 154 H168 M85 186 H169" stroke="${silksTrim}" stroke-width="12"/>`;const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320"><defs><linearGradient id="shine" x1="0" x2="1"><stop stop-color="#fff" stop-opacity=".16"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></linearGradient><clipPath id="vestClip"><path d="M116 39 L139 29 L160 46 L181 29 L204 39 L226 69 L207 91 L190 78 L190 252 Q160 271 130 252 L130 78 L113 91 L94 69 Z"/></clipPath></defs><path d="M116 39 L139 29 L160 46 L181 29 L204 39 L226 69 L207 91 L190 78 L190 252 Q160 271 130 252 L130 78 L113 91 L94 69 Z" fill="${silksMain}" stroke="${silksTrim}" stroke-width="5" stroke-linejoin="round"/><g clip-path="url(#vestClip)">${details}<path d="M142 37 Q160 61 178 37" fill="none" stroke="${silksTrim}" stroke-width="6"/><path d="M98 253 H222" stroke="${silksTrim}" stroke-width="5"/><path d="M116 39 L139 29 L160 46 L181 29 L204 39 L226 69 L207 91 L190 78 L190 252 Q160 271 130 252 L130 78 L113 91 L94 69 Z" fill="url(#shine)"/></g><text x="160" y="185" font-family="Arial,Helvetica,sans-serif" font-size="76" font-weight="900" text-anchor="middle" fill="${silksTrim}" stroke="#111" stroke-width="1.5" paint-order="stroke">${num}</text><text x="160" y="300" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="900" letter-spacing="2" text-anchor="middle" fill="#f5f1e8">DOG DOLLARS</text></svg>`;document.getElementById('silksSvg').innerHTML=svg;document.getElementById('silksLabel').textContent=`DOG DOLLARS • ${num}`;return svg}
-function setupSilks(){document.querySelectorAll('[data-silks-main]').forEach(b=>b.addEventListener('click',()=>{silksMain=b.dataset.silksMain;document.querySelectorAll('[data-silks-main]').forEach(x=>x.classList.toggle('active',x===b));makeSilksSvg()}));document.querySelectorAll('[data-silks-trim]').forEach(b=>b.addEventListener('click',()=>{silksTrim=b.dataset.silksTrim;document.querySelectorAll('[data-silks-trim]').forEach(x=>x.classList.toggle('active',x===b));makeSilksSvg()}));document.getElementById('silksPattern').addEventListener('change',makeSilksSvg);document.getElementById('silksNumber').addEventListener('change',makeSilksSvg);
+function makeSilksSvg(){const target=document.getElementById('silksSvg');if(!target)return "";const pattern=document.getElementById('silksPattern')?.value||'solid';const num=document.getElementById('silksNumber')?.value||'7';let details='';if(pattern==='stripes')details=`<path d="M125 55 L95 213 M160 52 L130 213" stroke="${silksTrim}" stroke-width="16"/>`;if(pattern==='diagonal')details=`<path d="M70 86 L135 151 M89 65 L159 135 M108 56 L176 124" stroke="${silksTrim}" stroke-width="13"/>`;if(pattern==='hoops')details=`<path d="M88 122 H166 M86 154 H168 M85 186 H169" stroke="${silksTrim}" stroke-width="12"/>`;const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320"><defs><linearGradient id="shine" x1="0" x2="1"><stop stop-color="#fff" stop-opacity=".16"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></linearGradient><clipPath id="vestClip"><path d="M116 39 L139 29 L160 46 L181 29 L204 39 L226 69 L207 91 L190 78 L190 252 Q160 271 130 252 L130 78 L113 91 L94 69 Z"/></clipPath></defs><path d="M116 39 L139 29 L160 46 L181 29 L204 39 L226 69 L207 91 L190 78 L190 252 Q160 271 130 252 L130 78 L113 91 L94 69 Z" fill="${silksMain}" stroke="${silksTrim}" stroke-width="5" stroke-linejoin="round"/><g clip-path="url(#vestClip)">${details}<path d="M142 37 Q160 61 178 37" fill="none" stroke="${silksTrim}" stroke-width="6"/><path d="M98 253 H222" stroke="${silksTrim}" stroke-width="5"/><path d="M116 39 L139 29 L160 46 L181 29 L204 39 L226 69 L207 91 L190 78 L190 252 Q160 271 130 252 L130 78 L113 91 L94 69 Z" fill="url(#shine)"/></g><text x="160" y="185" font-family="Arial,Helvetica,sans-serif" font-size="76" font-weight="900" text-anchor="middle" fill="${silksTrim}" stroke="#111" stroke-width="1.5" paint-order="stroke">${num}</text><text x="160" y="300" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="900" letter-spacing="2" text-anchor="middle" fill="#f5f1e8">DOG DOLLARS</text></svg>`;target.innerHTML=svg;const label=document.getElementById('silksLabel');if(label)label.textContent=`DOG DOLLARS • ${num}`;return svg}
+function setupSilks(){if(!document.getElementById('silksSvg'))return;document.querySelectorAll('[data-silks-main]').forEach(b=>b.addEventListener('click',()=>{silksMain=b.dataset.silksMain;document.querySelectorAll('[data-silks-main]').forEach(x=>x.classList.toggle('active',x===b));makeSilksSvg()}));document.querySelectorAll('[data-silks-trim]').forEach(b=>b.addEventListener('click',()=>{silksTrim=b.dataset.silksTrim;document.querySelectorAll('[data-silks-trim]').forEach(x=>x.classList.toggle('active',x===b));makeSilksSvg()}));document.getElementById('silksPattern').addEventListener('change',makeSilksSvg);document.getElementById('silksNumber').addEventListener('change',makeSilksSvg);
   document.getElementById('downloadSilks').addEventListener('click',()=>{const svg=makeSilksSvg();const blob=new Blob([svg],{type:'image/svg+xml;charset=utf-8'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='dog-dollars-racing-silks.svg';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);document.getElementById('silksMessage').textContent='Your custom racing silks have been downloaded.'});
   document.getElementById('shareSilks').addEventListener('click',async()=>{const text='I designed my racing silks at Dog Dollars — FAST TRACK FASHION!';try{if(navigator.share){await navigator.share({title:'My Dog Dollars Racing Silks',text,url:location.href})}else if(navigator.clipboard){await navigator.clipboard.writeText(text+' '+location.href);document.getElementById('silksMessage').textContent='Share text copied — send it to your mates.'}else{document.getElementById('silksMessage').textContent=text}}catch(e){}});makeSilksSvg();}
 function setupLogoSecret(){const brand=document.querySelector('.brand');if(!brand)return;let taps=0,last=0;brand.addEventListener('click',()=>{const now=Date.now();taps=now-last>4500?1:taps+1;last=now;if(taps>=5){taps=0;try{localStorage.setItem('ddGoldenDog','yes')}catch(e){}renderPack();const t=document.getElementById('ddToast');t.textContent='🏆 SECRET UNLOCKED: The Golden Ghost has joined your pack!';t.classList.add('show');t.style.display='block';setTimeout(()=>{t.style.display='none'},4000)}})}
@@ -879,7 +897,7 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    state.name=$('ddDogName').value.trim()||'My Greyhound';state.marking=$('ddMarking').value;state.pattern=$('ddJerseyPattern').value;state.num=$('ddJerseyNumber').value;
    state.hair=$('ddHairStyle')?.value||'crest';state.ears=$('ddEarStyle')?.value||'folded';state.accessory=$('ddAccessory')?.value||'collar';state.tail=$('ddTailStyle')?.value||'long';
  }
- function render(){readControls();$('ddDogStage').innerHTML=dogSvg();}
+ function render(){readControls();if(typeof window.ddQueueCustomDogLive==='function'){window.ddQueueCustomDogLive();return;}if(typeof window.ddSyncCustomDogLive==='function'){window.ddSyncCustomDogLive();return;}$('ddDogStage').innerHTML=dogSvg();}
  function swatches(container,arr,key){$(container).innerHTML=arr.map(([name,col])=>`<button type="button" class="ddSwatch" style="background:${col}" aria-label="${name}" title="${name}" aria-pressed="${state[key]===col}" data-col="${col}"></button>`).join('');$(container).querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state[key]=b.dataset.col;swatches(container,arr,key);render()}));}
  function populate(){const sel=$('ddSavedSelect');sel.innerHTML='<option value="">Choose a saved dog</option>'+saved.map((d,i)=>`<option value="${i}">${esc(d.name)} · Box ${d.num}</option>`).join('');$('ddSavedList').innerHTML=saved.map((d,i)=>`<div class="ddSavedCard"><img src="${'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(dogSvg(d))}" alt=""><div style="flex:1"><strong>${esc(d.name)}</strong><small>${esc(d.marking)} coat · ${esc(d.hair||'sleek')} style · box ${d.num}</small></div><button type="button" class="btn ghost" data-dd-delete="${i}" aria-label="Delete ${esc(d.name)}">Delete</button></div>`).join('');$('ddSavedList').querySelectorAll('[data-dd-delete]').forEach(b=>b.addEventListener('click',()=>{saved.splice(Number(b.dataset.ddDelete),1);persist()}));}
  function persist(){try{localStorage.setItem('ddCustomDogs',JSON.stringify(saved))}catch(e){}populate()}
@@ -890,7 +908,7 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
  ['ddDogName','ddMarking','ddJerseyPattern','ddJerseyNumber','ddHairStyle','ddEarStyle','ddAccessory','ddTailStyle'].forEach(id=>$(id)?.addEventListener('input',render));
  swatches('ddCoatSwatches',coats,'coat');swatches('ddJerseySwatches',jerseys,'jersey');
  // Restore an active custom runner saved before page refresh.
- try{const active=JSON.parse(localStorage.getItem('ddActiveCustomDog')||'null');if(active?.svgData){state={...state,...active};const idx=Math.max(0,Math.min(7,Number(active.num||7)-1));if(typeof raceDogs!=='undefined'&&raceDogs[idx]){raceDogs[idx].img=active.svgData;raceDogs[idx].name=active.name||'Custom Greyhound';raceDogs[idx].style='Custom runner';raceDogs[idx].customDog=true;}}}catch(e){}
+ try{const active=JSON.parse(localStorage.getItem('ddActiveCustomDog')||'null');if(active&&active.name){state={...state,...active};$('ddDogName').value=state.name||'Gold Rush';$('ddMarking').value=state.marking||'brindle';$('ddJerseyPattern').value=state.pattern||'gold';$('ddJerseyNumber').value=String(state.num||'7');['ddHairStyle','ddEarStyle','ddAccessory','ddTailStyle'].forEach((id,i)=>{const key=['hair','ears','accessory','tail'][i];if($(id)&&state[key])$(id).value=state[key]});swatches('ddCoatSwatches',coats,'coat');swatches('ddJerseySwatches',jerseys,'jersey');if(active.svgData){const idx=Math.max(0,Math.min(7,Number(active.num||7)-1));if(typeof raceDogs!=='undefined'&&raceDogs[idx]){raceDogs[idx].img=active.svgData;raceDogs[idx].name=active.name;raceDogs[idx].style='Custom runner';raceDogs[idx].customDog=true;}}}}catch(e){}
  populate();render();
 })();
 
@@ -1046,9 +1064,10 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
        btn.dataset.ddHoodieBackBound='1';
        btn.addEventListener('click',()=>{
          const isBack=/back/i.test(btn.textContent||'');
-         if(front)front.style.display=isBack?'none':'block';
+         if(front)front.hidden=isBack;
          back.hidden=!isBack;
          if(note)note.hidden=true;
+         visual.querySelectorAll('.viewSide').forEach(sideButton=>{const active=sideButton===btn;sideButton.classList.toggle('active',active);sideButton.setAttribute('aria-pressed',String(active));});
        });
      });
    });
@@ -1075,11 +1094,102 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
  let runners=[];
  try{if(typeof raceDogs!=='undefined'&&Array.isArray(raceDogs))runners=raceDogs.slice(0,8)}catch(e){}
  if(runners.length!==8)runners=namesFallback.map((name,i)=>({id:i+1,name,num:String(i+1),style:'Cup runner',color:colors[i]}));
- runners=runners.map((d,i)=>({...d,num:String(d.num||i+1),name:d.name||namesFallback[i],style:d.style||'Cup runner',vest:colors[i]}));
+ runners=runners.map((d,i)=>({...d,num:String(i+1),name:d.name||namesFallback[i],style:d.style||'Cup runner',vest:colors[i],custom:false,customState:null}));
+ const baseRunners=runners.map(d=>({...d}));
 
- let chosen=0,running=false,raf=0,lastFrame=0,startTime=0,finishOrder=[],speeds=[],particles=[],soundOn=true,audioCtx=null,crowdSource=null,crowdGain=null;
- const coatCache=new Map();
- function tintedSprite(coat){if(!coat||!sprite.complete||!sprite.naturalWidth)return sprite;if(coatCache.has(coat))return coatCache.get(coat);const c=document.createElement('canvas');c.width=1200;c.height=600;const q=c.getContext('2d');q.drawImage(sprite,0,0,1200,600);q.globalCompositeOperation='source-atop';q.globalAlpha=.32;q.fillStyle=coat;q.fillRect(0,0,c.width,c.height);q.globalCompositeOperation='source-over';coatCache.set(coat,c);return c;}
+ let chosen=0,running=false,raceFinished=false,raf=0,lastFrame=0,startTime=0,finishOrder=[],speeds=[],particles=[],soundOn=true,audioCtx=null,crowdSource=null,crowdGain=null;
+ // The race uses an independent timer per run; an old timeout must never end a later replay.
+ let raceEpoch=0,raceWatchdogTimer=null,pendingCustom=null;
+ let lastCommentAt=0,commentaryLastLeader=-1,commentaryLastSecond=-1;
+ const runnerSpriteCache=new Map(),runnerSpriteUrlCache=new Map();
+ const vestRegion=[[532,132],[553,111],[616,123],[683,105],[752,103],[797,121],[823,150],[853,196],[883,238],[869,274],[842,305],[820,331],[783,346],[747,334],[709,309],[668,289],[618,265],[571,240],[545,216]];
+ const numberPatch=[[617,157],[633,141],[697,153],[715,178],[704,198],[635,187]];
+ const armholeOpening=[[766,216],[778,207],[794,205],[809,216],[817,232],[816,248],[805,261],[789,262],[777,250],[769,234]];
+ function inVestMaterial(x,y){return inPolygon(x,y,vestRegion)&&!inPolygon(x,y,armholeOpening);}
+ function inPolygon(x,y,poly){let inside=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){const xi=poly[i][0],yi=poly[i][1],xj=poly[j][0],yj=poly[j][1];const cross=((yi>y)!==(yj>y))&&(x<(xj-xi)*(y-yi)/(yj-yi+1e-8)+xi);if(cross)inside=!inside;}return inside;}
+ function makeRunnerSprite(coat,vest,marking='none',tail='long',hair='none',ears='folded'){
+   if(!sprite.complete||!sprite.naturalWidth)return sprite;
+   const key=[coat||'default',vest||'default',marking||'none',tail||'long',hair||'none',ears||'folded'].join('|');
+   if(runnerSpriteCache.has(key)){const cached=runnerSpriteCache.get(key);runnerSpriteCache.delete(key);runnerSpriteCache.set(key,cached);return cached;}
+   const c=document.createElement('canvas');c.width=1200;c.height=600;const q=c.getContext('2d',{willReadFrequently:true});q.drawImage(sprite,0,0,1200,600);
+   try{
+     const im=q.getImageData(0,0,c.width,c.height),p=im.data;
+     const coatRGB=hexRGB(coat||'#75604b'),vestRGB=vest?hexRGB(vest):null;
+     const tailMask=[[0,272],[24,270],[55,267],[88,262],[120,255],[152,246],[184,232],[216,216],[247,201],[275,188],[299,180],[319,179],[336,186],[349,194],[344,205],[328,207],[309,211],[289,222],[266,237],[242,253],[216,270],[190,283],[164,291],[136,295],[106,293],[78,287],[50,281],[24,278],[0,282]];
+     const earMask=[[907,98],[917,91],[933,85],[949,78],[965,74],[982,77],[1000,86],[1012,97],[1008,106],[992,111],[974,111],[955,108],[936,108],[920,106],[911,103]];
+     for(let y=0;y<600;y++)for(let x=0;x<1200;x++){
+       const idx=(y*c.width+x)*4,a=p[idx+3];if(a<28)continue;
+       if(tail!=='long'&&x<365&&y>172&&y<305&&inPolygon(x,y,tailMask)){p[idx+3]=0;continue;}
+       if((ears==='pricked'||ears==='floppy')&&x>=900&&x<=1005&&y>=62&&y<=140&&inPolygon(x,y,earMask)){p[idx+3]=0;continue;}
+       const R=p[idx],G=p[idx+1],B=p[idx+2],lum=.299*R+.587*G+.114*B,sat=Math.max(R,G,B)-Math.min(R,G,B);
+       const inVestBox=x>=500&&x<=930&&y>=90&&y<=360;
+       let recolouredVest=false;
+       const onVest=inVestBox&&inVestMaterial(x,y);
+       const goldTrim=onVest&&sat>45&&R>G+12&&G>B+8&&R>130&&lum>80;
+       if(vestRGB&&onVest){
+         if(inPolygon(x,y,numberPatch)&&lum>65){tintPixel(p,idx,vestRGB,lum,.10);recolouredVest=true;}
+         else if(lum<150&&sat<72&&!goldTrim){tintPixel(p,idx,vestRGB,lum,.06);recolouredVest=true;}
+       }
+       if(recolouredVest)continue;
+       if(coatRGB&&lum>34&&!goldTrim&&(lum<245||(inVestBox&&inPolygon(x,y,armholeOpening)))){const inArmhole=inVestBox&&inPolygon(x,y,armholeOpening);const mix=inArmhole?(lum>190?.08:.06):(lum<70||lum>190)?.27:.18;tintPixel(p,idx,coatRGB,lum,mix);}
+     }
+     q.putImageData(im,0,0);
+     drawNaturalCoatDetails(q,coat||'#75604b',marking||'none',tail||'long',hair||'none',ears||'folded');
+   }catch(e){
+     q.globalCompositeOperation='source-atop';q.globalAlpha=.28;q.fillStyle=coat||'#75604b';q.fillRect(0,0,c.width,c.height);q.globalCompositeOperation='source-over';
+   }
+   runnerSpriteCache.set(key,c);while(runnerSpriteCache.size>10)runnerSpriteCache.delete(runnerSpriteCache.keys().next().value);
+   return c;
+ }
+ function drawNaturalCoatDetails(q,coat,marking,tail,hair,ears){
+   // Coat markings are blended into the photographic cut-out and clipped to the dog alpha, so no marks float over the race background.
+   q.save();q.globalCompositeOperation='source-atop';
+   if(marking==='socks'){
+     const sock=(path,x1,y1,x2,y2)=>{q.save();q.clip(path);const g=q.createLinearGradient(x1,y1,x2,y2);g.addColorStop(0,'rgba(242,237,225,0)');g.addColorStop(.28,'rgba(242,237,225,.62)');g.addColorStop(1,'rgba(249,246,237,.94)');q.fillStyle=g;q.fill(path);q.restore()};
+     let p=new Path2D('M78 446 Q90 431 111 419 L132 432 Q119 453 101 480 Q91 492 78 478 Z');sock(p,110,430,88,486);
+     p=new Path2D('M410 400 Q428 400 445 415 L478 438 Q493 451 505 461 Q503 478 485 477 L463 461 L430 438 Q416 423 410 400 Z');sock(p,426,408,494,468);
+     p=new Path2D('M992 411 Q1010 414 1030 427 L1072 444 Q1090 449 1112 455 Q1122 468 1104 473 L1070 464 L1026 447 Q1002 435 992 411 Z');sock(p,1008,420,1111,465);
+     p=new Path2D('M1014 457 Q1035 462 1055 474 L1094 493 Q1112 500 1126 506 Q1132 519 1113 520 L1073 506 L1037 488 Q1018 475 1014 457 Z');sock(p,1026,466,1124,513);
+   }
+   if(marking==='blaze'){
+     const g=q.createLinearGradient(1010,122,1060,190);g.addColorStop(0,'rgba(244,239,227,.82)');g.addColorStop(.6,'rgba(244,239,227,.92)');g.addColorStop(1,'rgba(244,239,227,.35)');q.fillStyle=g;q.beginPath();q.moveTo(1003,120);q.quadraticCurveTo(1019,125,1035,145);q.lineTo(1053,166);q.quadraticCurveTo(1053,179,1040,188);q.quadraticCurveTo(1024,167,1012,147);q.closePath();q.fill();
+   }
+   if(marking==='patch'){
+     const g=q.createRadialGradient(370,188,3,370,188,42);g.addColorStop(0,'rgba(244,240,230,.22)');g.addColorStop(.55,'rgba(239,234,221,.13)');g.addColorStop(1,'rgba(239,234,221,0)');q.fillStyle=g;q.beginPath();q.moveTo(332,180);q.quadraticCurveTo(343,166,358,170);q.quadraticCurveTo(375,163,385,172);q.quadraticCurveTo(401,171,404,186);q.quadraticCurveTo(410,195,392,201);q.quadraticCurveTo(379,208,365,201);q.quadraticCurveTo(348,207,340,194);q.closePath();q.fill();
+   }
+   if(marking==='brindle'){
+     q.save();q.lineCap='round';[[281,150,301,190,5],[307,140,328,180,4],[336,147,357,186,5],[365,135,387,175,4],[397,143,417,181,5],[426,148,446,186,4],[453,148,472,183,5],[300,202,318,229,4],[345,198,365,226,4],[389,194,407,220,4]].forEach(([x1,y1,x2,y2,w])=>{const g=q.createLinearGradient(x1,y1,x2,y2);g.addColorStop(0,'rgba(24,20,18,0)');g.addColorStop(.25,'rgba(24,20,18,.42)');g.addColorStop(.75,'rgba(24,20,18,.48)');g.addColorStop(1,'rgba(24,20,18,0)');q.strokeStyle=g;q.lineWidth=w;q.beginPath();q.moveTo(x1,y1);q.lineTo(x2,y2);q.stroke()});q.restore();
+   }
+   q.restore();
+   // Tail changes remove the old tail pixels first, then redraw a tapered contour attached at the rump.
+   if(tail!=='long'){
+     const fur=hexRGB(coat),tone=v=>`rgb(${Math.round(fur[0]*v)},${Math.round(fur[1]*v)},${Math.round(fur[2]*v)})`;
+     const g=q.createLinearGradient(280,228,342,190);g.addColorStop(0,tone(.62));g.addColorStop(.52,tone(1));g.addColorStop(1,tone(.78));
+     q.save();q.lineCap='round';q.lineJoin='round';q.strokeStyle='rgba(21,17,14,.76)';q.lineWidth=25;q.beginPath();
+     if(tail==='curled'){q.moveTo(332,190);q.bezierCurveTo(305,198,277,214,277,234);q.bezierCurveTo(277,252,300,256,310,240);q.bezierCurveTo(319,224,302,216,291,228)}
+     else{q.moveTo(332,190);q.bezierCurveTo(315,198,299,205,283,211)}q.stroke();
+     q.strokeStyle=g;q.lineWidth=17;q.beginPath();
+     if(tail==='curled'){q.moveTo(332,190);q.bezierCurveTo(305,198,277,214,277,234);q.bezierCurveTo(277,252,300,256,310,240);q.bezierCurveTo(319,224,302,216,291,228)}
+     else{q.moveTo(332,190);q.bezierCurveTo(315,198,299,205,283,211)}q.stroke();q.restore();
+   }
+   // Folded ears are the natural photographed default; the two alternate silhouettes are added directly against the head.
+   if(ears==='pricked'||ears==='floppy'){
+     const g=q.createLinearGradient(0,72,0,136);g.addColorStop(0,toneForCoat(coat,1.18));g.addColorStop(1,toneForCoat(coat,.62));q.save();q.lineJoin='round';q.lineCap='round';q.fillStyle=g;q.strokeStyle='rgba(22,17,14,.78)';q.lineWidth=5;q.beginPath();
+     if(ears==='pricked'){q.moveTo(945,104);q.lineTo(941,76);q.quadraticCurveTo(954,86,962,104);q.closePath();q.moveTo(963,103);q.lineTo(976,78);q.quadraticCurveTo(985,89,979,109);q.closePath()}
+     else{q.moveTo(953,103);q.quadraticCurveTo(929,91,923,98);q.quadraticCurveTo(930,111,952,114);q.closePath();q.moveTo(964,103);q.quadraticCurveTo(982,94,990,103);q.quadraticCurveTo(985,115,972,115);q.closePath()}
+     q.fill();q.stroke();q.restore();
+   }
+   if(hair==='crest'||hair==='mohawk'){
+     const g=q.createLinearGradient(0,75,0,110);g.addColorStop(0,toneForCoat(coat,1.10));g.addColorStop(1,toneForCoat(coat,.82));q.save();q.fillStyle=g;q.strokeStyle='rgba(22,17,14,.38)';q.lineWidth=2;q.beginPath();
+     if(hair==='mohawk'){q.moveTo(944,94);q.lineTo(953,78);q.lineTo(962,89);q.lineTo(970,75);q.lineTo(980,91);q.quadraticCurveTo(962,89,944,94)}
+     else{q.moveTo(944,94);q.quadraticCurveTo(951,80,966,81);q.quadraticCurveTo(980,82,990,96);q.quadraticCurveTo(967,91,944,94)}q.closePath();q.fill();q.stroke();q.restore();
+   }
+ }
+ function toneForCoat(hex,factor){const c=hexRGB(hex);return `rgb(${Math.max(0,Math.min(255,Math.round(c[0]*factor)))},${Math.max(0,Math.min(255,Math.round(c[1]*factor)))},${Math.max(0,Math.min(255,Math.round(c[2]*factor)))})`;}
+ function hexRGB(hex){const m=String(hex||'').match(/^#?([0-9a-f]{6})$/i);return m?[parseInt(m[1].slice(0,2),16),parseInt(m[1].slice(2,4),16),parseInt(m[1].slice(4,6),16)]:[117,96,75];}
+ function tintPixel(p,i,target,lum,mix){const shade=Math.max(.30,Math.min(1.35,.34+lum/220));for(let k=0;k<3;k++){const original=p[i+k];p[i+k]=Math.max(0,Math.min(255,Math.round(target[k]*shade*(1-mix)+original*mix)));}}
+ function runnerSpriteUrl(coat,vest,marking='none',tail='long',hair='none',ears='folded'){const key=[coat||'default',vest||'default',marking||'none',tail||'long',hair||'none',ears||'folded'].join('|');if(runnerSpriteUrlCache.has(key)){const cached=runnerSpriteUrlCache.get(key);runnerSpriteUrlCache.delete(key);runnerSpriteUrlCache.set(key,cached);return cached;}const art=makeRunnerSprite(coat,vest,marking,tail,hair,ears);if(art===sprite)return spriteSrc;try{const url=art.toDataURL('image/webp',.92);runnerSpriteUrlCache.set(key,url);while(runnerSpriteUrlCache.size>10)runnerSpriteUrlCache.delete(runnerSpriteUrlCache.keys().next().value);return url}catch(e){return spriteSrc}}
+ function tintedSprite(coat){return makeRunnerSprite(coat,null)}
  let canvas=document.createElement('canvas');canvas.id='ddBroadcastCanvas';canvas.setAttribute('role','img');canvas.setAttribute('aria-label','Animated Dog Dollars Cup with eight racing greyhounds');
  track.innerHTML='';track.appendChild(canvas);
  const ctx=canvas.getContext('2d');
@@ -1094,27 +1204,37 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
  function currentCustom(){
    try{return JSON.parse(localStorage.getItem('ddActiveCustomDog')||'null')}catch(e){return null}
  }
+ function dedupeRunnerNames(customIndex=runners.findIndex(d=>d.custom)){
+   const seen=new Set();
+   // Reserve the custom name first so it always wins over a stock runner with the same name.
+   const order=Array.from({length:runners.length},(_,i)=>i).sort((a,b)=>a===customIndex?-1:b===customIndex?1:a-b);
+   for(const i of order){const d=runners[i];let name=String(d.name||namesFallback[i]).trim()||namesFallback[i];let key=name.toLowerCase();
+     if(seen.has(key)){let candidate=namesFallback[i]||`Greyhound ${i+1}`;if(seen.has(candidate.toLowerCase()))candidate=`${candidate} ${i+1}`;let suffix=2;while(seen.has(candidate.toLowerCase()))candidate=`${namesFallback[i]} ${suffix++}`;name=candidate;key=name.toLowerCase();}
+     d.name=name;seen.add(key);
+   }
+ }
+ function applyCustomDog(d){
+   // Start with the untouched eight-runner field every time. This removes a custom dog from its old box when the user changes box number.
+   runners=baseRunners.map(x=>({...x,custom:false,customState:null}));
+   if(!d||!String(d.name||'').trim()){dedupeRunnerNames(-1);return;}
+   const num=Number(d.num||7),i=Number.isFinite(num)?Math.max(0,Math.min(7,Math.round(num)-1)):6;
+   runners[i]={...runners[i],name:String(d.name).trim().slice(0,24)||namesFallback[i],num:String(i+1),style:'Custom greyhound',custom:true,customState:{...d,num:String(i+1)}};
+   dedupeRunnerNames(i);
+ }
  function applyActiveCustom(){
-   const d=currentCustom();if(!d)return;
-   const i=Math.max(0,Math.min(7,Number(d.num||7)-1));
-   runners[i]={...runners[i],name:d.name||runners[i].name,style:'Custom greyhound',custom:true,customState:d};
+   const d=currentCustom();if(d&&d.name)applyCustomDog(d);else{runners=baseRunners.map(x=>({...x,custom:false,customState:null}));dedupeRunnerNames(-1);}
  }
  applyActiveCustom();
- // Live bridge: the creator publishes changes immediately, without requiring a separate "Use Dog" click.
- window.addEventListener('ddCustomDogChanged', event=>{
-   if(running)return; // never change a runner underneath an active race
-   const d=event.detail;
-   if(!d || !d.name)return;
+ window.addEventListener('ddCustomDogChanged',event=>{
+   const d=event.detail;if(!d||!String(d.name||'').trim())return;
    try{localStorage.setItem('ddActiveCustomDog',JSON.stringify(d))}catch(e){}
-   const i=Math.max(0,Math.min(7,Number(d.num||7)-1));
-   runners[i]={...runners[i],name:d.name,num:String(d.num||i+1),style:'Your custom greyhound',custom:true,customState:d,coat:d.coat,vest:d.vest,pattern:d.pattern};
-   chosen=i;
-   buildPicks();
-   draw(0);
+   if(running){pendingCustom=d;if($('raceMsg'))$('raceMsg').textContent='Custom dog changes saved. They’ll appear in the next race.';return;}
+   applyCustomDog(d);chosen=Math.max(0,Math.min(7,Number(d.num||7)-1));buildPicks();draw(0);
  });
  window.addEventListener('storage',event=>{
-   if(event.key!=='ddActiveCustomDog'||running)return;
-   applyActiveCustom();buildPicks();draw(0);
+   if(event.key!=='ddActiveCustomDog')return;
+   if(running){pendingCustom=currentCustom();return;}
+   applyActiveCustom();chosen=Math.max(0,Math.min(7,runners.findIndex(d=>d.custom)>=0?runners.findIndex(d=>d.custom):chosen));buildPicks();draw(0);
  });
 
  function sizeCanvas(){
@@ -1158,31 +1278,70 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    return {trackY,trackH,laneH,finishX};
  }
  function dogVest(ctx,x,y,dog,w,h,idx,t){
-   const s=dog.customState||{};
-   const vest=s.jersey||s.vest||colors[idx]||'#c92a21';
-   // Overlay on the vest area of the realistic dog cutout.
+   const s=dog.customState||{}, vest=s.jersey||s.vest||colors[idx]||'#c92a21', trim=s.trim||'#f3c842';
    ctx.save();ctx.translate(x,y);ctx.scale(w/1200,h/600);
-   ctx.beginPath();ctx.moveTo(510,180);ctx.lineTo(610,160);ctx.lineTo(735,190);ctx.lineTo(820,270);ctx.lineTo(790,335);ctx.lineTo(690,365);ctx.lineTo(555,300);ctx.closePath();
-   ctx.fillStyle=vest;ctx.globalAlpha=.88;ctx.fill();ctx.globalAlpha=1;
-   ctx.strokeStyle=s.trim||'#f5d05b';ctx.lineWidth=9;ctx.stroke();
-   if(s.pattern==='stripes'){ctx.strokeStyle='#f5f1e7';ctx.lineWidth=18;ctx.beginPath();ctx.moveTo(580,180);ctx.lineTo(640,340);ctx.moveTo(650,180);ctx.lineTo(710,330);ctx.stroke()}
-   if(s.pattern==='hoops'){ctx.strokeStyle='#f5f1e7';ctx.lineWidth=16;ctx.beginPath();ctx.moveTo(540,240);ctx.lineTo(785,240);ctx.moveTo(555,285);ctx.lineTo(790,285);ctx.stroke()}
-   if(s.pattern==='diagonal'){ctx.strokeStyle='#f5f1e7';ctx.lineWidth=17;ctx.beginPath();ctx.moveTo(555,195);ctx.lineTo(700,330);ctx.moveTo(610,178);ctx.lineTo(755,300);ctx.stroke()}
-   if(s.pattern==='gold'){ctx.strokeStyle='#f5d05b';ctx.lineWidth=19;ctx.beginPath();ctx.moveTo(560,230);ctx.lineTo(665,315);ctx.lineTo(770,220);ctx.stroke()}
-   ctx.fillStyle='#fff';ctx.font='900 58px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.strokeStyle='#111';ctx.lineWidth=4;ctx.strokeText(String(dog.num||idx+1),675,265);ctx.fillText(String(dog.num||idx+1),675,265);
-   // Fun crest/collar/accessory overlays, kept subtle on the realistic dog.
-   if(s.hair==='crest'||s.hair==='mohawk'||s.hair==='spikes'){ctx.fillStyle=s.coat||'#75604b';ctx.beginPath();ctx.moveTo(1004,132);ctx.quadraticCurveTo(1020,111,1041,119);ctx.quadraticCurveTo(1059,119,1078,139);ctx.quadraticCurveTo(1054,130,1037,135);ctx.quadraticCurveTo(1020,136,1004,132);ctx.closePath();ctx.globalAlpha=.82;ctx.fill();ctx.globalAlpha=1;ctx.strokeStyle='rgba(20,18,16,.65)';ctx.lineWidth=4;ctx.stroke()}
-   if(s.accessory==='collar'||s.accessory==='tag'){ctx.strokeStyle='#e9c34e';ctx.lineWidth=16;ctx.beginPath();ctx.moveTo(925,210);ctx.lineTo(1000,260);ctx.stroke();if(s.accessory==='tag'){ctx.fillStyle='#f3c842';ctx.beginPath();ctx.arc(975,267,14,0,Math.PI*2);ctx.fill()}}
+   // Pattern strokes are clipped to the real vest silhouette, so they cannot spill onto the dog's back or legs.
+   ctx.beginPath();ctx.moveTo(532,132);ctx.lineTo(553,111);ctx.lineTo(616,123);ctx.lineTo(683,105);ctx.lineTo(752,103);ctx.lineTo(797,121);ctx.lineTo(823,150);ctx.lineTo(853,196);ctx.lineTo(883,238);ctx.lineTo(869,274);ctx.lineTo(842,305);ctx.lineTo(820,331);ctx.lineTo(783,346);ctx.lineTo(747,334);ctx.lineTo(709,309);ctx.lineTo(668,289);ctx.lineTo(618,265);ctx.lineTo(571,240);ctx.lineTo(545,216);ctx.closePath();ctx.moveTo(766,216);ctx.lineTo(778,207);ctx.lineTo(794,205);ctx.lineTo(809,216);ctx.lineTo(817,232);ctx.lineTo(816,248);ctx.lineTo(805,261);ctx.lineTo(789,262);ctx.lineTo(777,250);ctx.lineTo(769,234);ctx.closePath();ctx.moveTo(617,157);ctx.lineTo(633,141);ctx.lineTo(697,153);ctx.lineTo(715,178);ctx.lineTo(704,198);ctx.lineTo(635,187);ctx.closePath();ctx.clip('evenodd');
+   ctx.lineCap='round';ctx.lineJoin='round';
+   if(s.pattern==='stripes'){ctx.strokeStyle='#f5f1e7';ctx.lineWidth=16;ctx.beginPath();ctx.moveTo(570,128);ctx.lineTo(638,245);ctx.moveTo(615,142);ctx.lineTo(681,260);ctx.stroke();}
+   if(s.pattern==='hoops'){ctx.strokeStyle='#f5f1e7';ctx.lineWidth=15;ctx.beginPath();ctx.moveTo(565,171);ctx.lineTo(790,233);ctx.moveTo(559,205);ctx.lineTo(777,263);ctx.stroke();}
+   if(s.pattern==='diagonal'){ctx.strokeStyle='#f5f1e7';ctx.lineWidth=16;ctx.beginPath();ctx.moveTo(560,154);ctx.lineTo(705,266);ctx.moveTo(603,145);ctx.lineTo(747,253);ctx.stroke();}
+   if(s.pattern==='gold'){ctx.strokeStyle=trim;ctx.lineWidth=17;ctx.beginPath();ctx.moveTo(568,187);ctx.lineTo(666,245);ctx.lineTo(754,181);ctx.stroke();}
+   if(s.pattern==='split'){ctx.fillStyle='#f5f1e7';ctx.globalAlpha=.88;ctx.beginPath();ctx.moveTo(643,130);ctx.lineTo(682,143);ctx.lineTo(720,256);ctx.lineTo(682,267);ctx.closePath();ctx.fill();ctx.globalAlpha=1;}
+   // A coloured, gold-edged number bib follows the panel on the photographic vest.
+   const lum=(parseInt(vest.slice(1,3),16)*.299+parseInt(vest.slice(3,5),16)*.587+parseInt(vest.slice(5,7),16)*.114);ctx.fillStyle=lum>155?'#171717':'#fff';ctx.font='900 54px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';ctx.lineWidth=3;ctx.strokeStyle=lum>155?'rgba(255,255,255,.85)':'rgba(0,0,0,.65)';ctx.strokeText(String(dog.num||idx+1),670,171);ctx.fillText(String(dog.num||idx+1),670,171);
    ctx.restore();
+   // Discreet accessories are placed at the collar, not floating over the torso.
+   if(s.accessory==='collar'||s.accessory==='tag'||s.accessory==='bandana'){
+     ctx.save();ctx.translate(x,y);ctx.scale(w/1200,h/600);
+     if(s.accessory==='collar'||s.accessory==='tag'){ctx.strokeStyle='#e9c34e';ctx.lineWidth=9;ctx.beginPath();ctx.moveTo(928,185);ctx.quadraticCurveTo(968,220,1000,231);ctx.stroke();}
+     if(s.accessory==='tag'){ctx.fillStyle='#f3c842';ctx.beginPath();ctx.arc(973,229,10,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#171717';ctx.lineWidth=2;ctx.stroke();}
+     if(s.accessory==='bandana'){ctx.fillStyle='#c92a21';ctx.strokeStyle='#f3c842';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(917,177);ctx.lineTo(984,200);ctx.lineTo(962,236);ctx.lineTo(934,208);ctx.closePath();ctx.fill();ctx.stroke();}
+     ctx.restore();
+   }
  }
- function drawDogMarkings(x,y,w,h,dog){
-   const s=dog.customState||{}; if(!s.marking||s.marking==='none')return;
-   ctx.save();ctx.translate(x,y);ctx.scale(w/1200,h/600);
-   if(s.marking==='blaze'){ctx.fillStyle='#f3efe4';ctx.globalAlpha=.9;ctx.beginPath();ctx.moveTo(994,124);ctx.quadraticCurveTo(1015,136,1020,160);ctx.lineTo(1007,188);ctx.lineTo(993,170);ctx.closePath();ctx.fill()}
-   if(s.marking==='socks'){ctx.fillStyle='#f3efe4';ctx.globalAlpha=.94;[[180,468,46,39],[342,442,42,39],[790,444,43,36]].forEach(([a,b,c,d])=>{ctx.beginPath();ctx.ellipse(a+c/2,b+d/2,c/2,d/2,0,0,Math.PI*2);ctx.fill()})}
-   if(s.marking==='patch'){ctx.fillStyle='#eee9df';ctx.globalAlpha=.82;ctx.beginPath();ctx.moveTo(330,170);ctx.quadraticCurveTo(385,142,427,183);ctx.lineTo(404,231);ctx.quadraticCurveTo(360,230,333,204);ctx.closePath();ctx.fill()}
-   if(s.marking==='brindle'){ctx.strokeStyle='#211c18';ctx.globalAlpha=.48;ctx.lineWidth=13;ctx.lineCap='round';ctx.beginPath();[[285,145,309,194],[317,133,339,180],[351,138,372,180],[393,128,414,168],[432,140,452,174],[467,139,485,174]].forEach(([a,b,c,d])=>{ctx.moveTo(a,b);ctx.lineTo(c,d)});ctx.stroke()}
-   ctx.restore();
+ function drawDogMarkings(targetCtx,x,y,w,h,dog){
+   const s=dog.customState||{};
+   targetCtx.save();targetCtx.translate(x,y);targetCtx.scale(w/1200,h/600);
+   // Coat markings and small silhouette details are drawn in the same coordinates as the dog artwork.
+   if(s.marking==='blaze'){targetCtx.fillStyle='#f3efe4';targetCtx.globalAlpha=.9;targetCtx.beginPath();targetCtx.moveTo(994,124);targetCtx.quadraticCurveTo(1015,136,1020,160);targetCtx.lineTo(1007,188);targetCtx.lineTo(993,170);targetCtx.closePath();targetCtx.fill()}
+   if(s.marking==='socks'){
+     // Narrow, tapered socks following each lower leg, with feathered tops rather than floating white blocks.
+     const sock=(path,x1,y1,x2,y2)=>{targetCtx.save();targetCtx.clip(path);const g=targetCtx.createLinearGradient(x1,y1,x2,y2);g.addColorStop(0,'rgba(242,237,225,0)');g.addColorStop(.3,'rgba(242,237,225,.64)');g.addColorStop(1,'rgba(249,246,237,.92)');targetCtx.fillStyle=g;targetCtx.fill(path);targetCtx.restore()};
+     let p=new Path2D('M78 446 Q90 431 111 419 L132 432 Q119 453 101 480 Q91 492 78 478 Z');sock(p,110,430,88,486);
+     p=new Path2D('M410 400 Q428 400 445 415 L478 438 Q493 451 505 461 Q503 478 485 477 L463 461 L430 438 Q416 423 410 400 Z');sock(p,426,408,494,468);
+     p=new Path2D('M992 411 Q1010 414 1030 427 L1072 444 Q1090 449 1112 455 Q1122 468 1104 473 L1070 464 L1026 447 Q1002 435 992 411 Z');sock(p,1008,420,1111,465);
+     p=new Path2D('M1014 457 Q1035 462 1055 474 L1094 493 Q1112 500 1126 506 Q1132 519 1113 520 L1073 506 L1037 488 Q1018 475 1014 457 Z');sock(p,1026,466,1124,513);
+   }
+   if(s.marking==='patch'){
+     const g=targetCtx.createRadialGradient(367,184,7,375,185,63);g.addColorStop(0,'rgba(244,240,230,.88)');g.addColorStop(.72,'rgba(239,234,221,.72)');g.addColorStop(1,'rgba(239,234,221,0)');
+     targetCtx.fillStyle=g;targetCtx.beginPath();targetCtx.moveTo(315,175);targetCtx.quadraticCurveTo(359,140,415,166);targetCtx.quadraticCurveTo(441,190,408,220);targetCtx.quadraticCurveTo(360,232,325,208);targetCtx.closePath();targetCtx.fill();
+   }
+   if(s.marking==='brindle'){
+     targetCtx.save();targetCtx.lineCap='round';
+     [[281,150,301,190,5],[307,140,328,180,4],[336,147,357,186,5],[365,135,387,175,4],[397,143,417,181,5],[426,148,446,186,4],[453,148,472,183,5],[300,202,318,229,4],[345,198,365,226,4],[389,194,407,220,4]].forEach(([x1,y1,x2,y2,w])=>{const g=targetCtx.createLinearGradient(x1,y1,x2,y2);g.addColorStop(0,'rgba(24,20,18,0)');g.addColorStop(.25,'rgba(24,20,18,.45)');g.addColorStop(.75,'rgba(24,20,18,.50)');g.addColorStop(1,'rgba(24,20,18,0)');targetCtx.strokeStyle=g;targetCtx.lineWidth=w;targetCtx.beginPath();targetCtx.moveTo(x1,y1);targetCtx.lineTo(x2,y2);targetCtx.stroke()});targetCtx.restore();
+   }
+   targetCtx.globalAlpha=1;
+   if(s.hair==='crest'||s.hair==='mohawk'){
+     targetCtx.fillStyle=s.coat||'#75604b';targetCtx.strokeStyle='rgba(20,18,16,.75)';targetCtx.lineWidth=4;targetCtx.beginPath();
+     if(s.hair==='mohawk'){targetCtx.moveTo(1004,132);targetCtx.lineTo(1018,105);targetCtx.lineTo(1031,125);targetCtx.lineTo(1046,98);targetCtx.lineTo(1058,126);targetCtx.lineTo(1078,139)}
+     else {targetCtx.moveTo(1004,132);targetCtx.quadraticCurveTo(1020,111,1041,119);targetCtx.quadraticCurveTo(1059,119,1078,139);targetCtx.quadraticCurveTo(1054,130,1037,135)}
+     targetCtx.closePath();targetCtx.fill();targetCtx.stroke();
+   }
+   if(s.ears==='upright'||s.ears==='pricked'||s.ears==='folded'||s.ears==='floppy'){
+     targetCtx.fillStyle=s.coat||'#75604b';targetCtx.strokeStyle='rgba(20,18,16,.8)';targetCtx.lineWidth=4;targetCtx.beginPath();
+     if(s.ears==='upright'||s.ears==='pricked'){targetCtx.moveTo(1000,121);targetCtx.lineTo(1000,78);targetCtx.quadraticCurveTo(1015,88,1019,119);targetCtx.closePath();targetCtx.moveTo(1032,116);targetCtx.lineTo(1054,77);targetCtx.quadraticCurveTo(1060,98,1050,128);targetCtx.closePath()}
+     else if(s.ears==='floppy'){targetCtx.moveTo(1000,115);targetCtx.quadraticCurveTo(968,102,975,81);targetCtx.quadraticCurveTo(1007,84,1020,119);targetCtx.closePath();targetCtx.moveTo(1035,115);targetCtx.quadraticCurveTo(1063,95,1075,110);targetCtx.quadraticCurveTo(1066,132,1045,132);targetCtx.closePath()}
+     else {targetCtx.moveTo(1000,115);targetCtx.quadraticCurveTo(971,100,982,79);targetCtx.quadraticCurveTo(1010,86,1020,119);targetCtx.closePath();targetCtx.moveTo(1035,115);targetCtx.quadraticCurveTo(1062,93,1074,112);targetCtx.quadraticCurveTo(1063,132,1045,132);targetCtx.closePath()}
+     targetCtx.fill();targetCtx.stroke();
+   }
+   if(s.tail==='curled'||s.tail==='short'){
+     targetCtx.strokeStyle=s.coat||'#75604b';targetCtx.lineWidth=22;targetCtx.lineCap='round';targetCtx.beginPath();
+     if(s.tail==='curled'){targetCtx.moveTo(180,325);targetCtx.quadraticCurveTo(110,350,135,390);targetCtx.quadraticCurveTo(160,405,175,380)}
+     else {targetCtx.moveTo(180,325);targetCtx.lineTo(135,345)}
+     targetCtx.stroke();
+   }
+   targetCtx.restore();
  }
  function drawDog(x,y,dog,idx,t,scale=1){
    const w=150*scale,h=w*0.5;
@@ -1190,11 +1349,11 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
      ctx.save();
      const s=dog.customState||{};
      const coat=dog.custom? s.coat : defaultCoats[idx];
-     const art=coat?tintedSprite(coat):sprite;
+     const vest=dog.custom?(s.jersey||s.vest||colors[idx]):colors[idx];
+     const art=makeRunnerSprite(coat,vest,dog.custom?s.marking:'none',dog.custom?s.tail:'long',dog.custom?s.hair:'none',dog.custom?s.ears:'folded');
      ctx.globalAlpha=.98;
      ctx.drawImage(art,x,y-h*.5,w,h);
      ctx.restore();
-     drawDogMarkings(x,y-h*.5,dog,w,h);
      dogVest(ctx,x,y-h*.5,dog,w,h,idx,t);
    }else{
      ctx.fillStyle=colors[idx];rr(x,y-16,w,32,14,colors[idx],'#f5f1e7');ctx.fillStyle='#fff';ctx.font='900 18px system-ui';ctx.fillText(String(idx+1),x+w*.55,y);
@@ -1210,33 +1369,36 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    const geo=drawBackground(w,h,t);
    const now=performance.now();
    const elapsed=running?(now-startTime)/1000:0;
-   const maxX=geo.finishX-82;
    runners.forEach((dog,i)=>{
-     const progress=running?Math.min(1,progressAt(i,elapsed)):0.015;
-     const x=38+(maxX-38)*progress;
-     const y=geo.trackY+geo.laneH*(i+.5)+Math.sin((running?elapsed:0)*17+i)* (running?2.8:0);
-     drawDog(x,y,dog,i,t,Math.min(1,geo.laneH/72));
-     if(running){ctx.fillStyle='rgba(255,239,205,.85)';ctx.font='700 10px system-ui';ctx.textAlign='right';ctx.fillText(dog.name.toUpperCase(),w-48,y+3)}
+     const scale=Math.min(1,geo.laneH/72),dogW=150*scale;
+     const frozenResult=raceFinished&&finishOrder.length?finishOrder.find(x=>x.i===i):null;
+     // Keep the finishing line-up staggered by the actual recorded finish rank.
+     // Otherwise a frozen results frame can make all eight dogs look level at the line.
+     const progress=running?progressAt(i,elapsed):(frozenResult?(1.10-((frozenResult.rank||8)-1)*.045):0.015);
+     const maxX=Math.max(38,geo.finishX-dogW-7);
+     const clamped=Math.min(1,Math.max(0,progress));
+     const x=38+(maxX-38)*clamped+(progress>1?Math.min(dogW*.20,(progress-1)*dogW*.8):0);
+     const y=geo.trackY+geo.laneH*(i+.5)+Math.sin((running?elapsed:0)*17+i)*(running?2.8:0);
+     drawDog(x,y,dog,i,t,scale);
+     if(running){ctx.fillStyle='rgba(255,239,205,.96)';ctx.font='800 9px system-ui';ctx.textAlign='left';ctx.fillText(dog.name.toUpperCase(),Math.max(40,Math.min(x+dogW*.28,w-112)),y-geo.laneH*.27)}
    });
    if(particles.length){particles=particles.filter(p=>p.life>0);particles.forEach(p=>{p.x+=p.vx*.016;p.y+=p.vy*.016;p.life-=.016;ctx.globalAlpha=Math.max(0,p.life*2);ctx.fillStyle='#d8b184';ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()});ctx.globalAlpha=1}
    if(running){ctx.fillStyle='#f3c842';ctx.font='900 12px system-ui';ctx.textAlign='left';ctx.fillText('LIVE RACE  ·  '+(elapsed.toFixed(1))+'s',w*.05,geo.trackY-13);liveCommentary(elapsed)}
  }
  function progressAt(i,elapsed){
-   const result=finishOrder.find(x=>x.i===i);
-   const total=result?.time||9;
-   const p=Math.max(0,Math.min(1,elapsed/total));
-   // Short launch, then a sustained run with small, readable surges. Each dog has a distinct finish time.
-   const launch=Math.min(1,p/.16);
-   const base=p<.16 ? .055*launch*launch : .055+(.945*((p-.16)/.84));
-   const surge=p>.52?Math.sin(p*11+i*1.83)*.012:Math.sin(p*7+i)*.004;
-   return Math.max(0,Math.min(1,base+surge));
+   const result=finishOrder.find(x=>x.i===i);const total=result?.time||9;
+   const p=Math.max(0,elapsed/total);
+   // Once a runner finishes it continues a short distance beyond the post. Winners therefore cross at different times instead of bunching at one line.
+   if(p>=1)return Math.min(1.20,1+(elapsed-total)*.055);
+   const launch=Math.min(1,p/.17);const base=p<.17?.05*launch*launch:.05+(.95*((p-.17)/.83));
+   const surge=p>.45?Math.sin(p*10.2+i*1.79)*.018:Math.sin(p*6.5+i)*.006;
+   return Math.max(0,Math.min(.995,base+surge));
  }
  function chooseFinishOrder(){
-   // Shuffle the field, then assign separated finish times so the runners do not bunch at the line.
-   const order=runners.map((dog,i)=>i).sort(()=>Math.random()-.5);
-   finishOrder=order.map((i,rank)=>({i,time:5.9+rank*.72+Math.random()*.16})).sort((a,b)=>a.time-b.time);
-   finishOrder.forEach((x,rank)=>{x.rank=rank+1});
-   speeds=Array(8).fill(0);
+   // Fisher–Yates gives a fair random order, with clear gaps between finishing times.
+   const order=runners.map((dog,i)=>i);for(let i=order.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[order[i],order[j]]=[order[j],order[i]];}
+   finishOrder=order.map((i,rank)=>({i,time:5.25+rank*.58+Math.random()*.12})).sort((a,b)=>a.time-b.time);
+   finishOrder.forEach((x,rank)=>{x.rank=rank+1});speeds=Array(8).fill(0);
  }
  function resize(){sizeCanvas()}
  window.addEventListener('resize',resize,{passive:true});
@@ -1249,10 +1411,12 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    if($('raceMsg'))$('raceMsg').textContent=`Your pick: Box ${i+1} · ${runners[i].name}. Run the race to see who takes the Cup.`;
  }
  function buildPicks(){
-   pickrow.innerHTML=runners.map((d,i)=>`<button type="button" class="racePickV6" data-box="${i+1}" aria-pressed="${i===chosen?'true':'false'}"><img src="${spriteSrc}" alt=""><span><strong>BOX ${i+1} · ${escapeHTML(d.name)}</strong><small>${escapeHTML(d.style)}</small></span></button>`).join('');
+   pickrow.innerHTML=runners.map((d,i)=>`<button type="button" class="racePickV6" data-box="${i+1}" aria-pressed="${i===chosen?'true':'false'}"><canvas class="ddPickThumb" width="240" height="120" role="img" aria-label="Box ${i+1}, ${escapeHTML(d.name)}"></canvas><span><strong>BOX ${i+1} · ${escapeHTML(d.name)}</strong><small>${escapeHTML(d.custom?customRunnerLabel(d):d.style)}</small></span></button>`).join('');
    pickrow.querySelectorAll('.racePickV6').forEach((b,i)=>b.addEventListener('click',()=>choose(i)));
-   choose(chosen);
+   drawPickThumbs();choose(Math.max(0,Math.min(7,chosen)));
  }
+ function customRunnerLabel(d){const s=d.customState||{};const coatName=({'#242321':'Black','#66717b':'Blue','#c99b6c':'Fawn','#75604b':'Brindle','#eee9df':'White','#9b6247':'Red fawn','#a7a9ac':'Silver'})[String(s.coat||'').toLowerCase()]||'Custom coat';return 'CUSTOM · '+coatName+' coat';}
+ function drawPickThumbs(){if(!sprite.complete||!sprite.naturalWidth)return;pickrow.querySelectorAll('canvas.ddPickThumb').forEach((cn,i)=>{const d=runners[i];if(!d)return;const q=cn.getContext('2d');q.clearRect(0,0,cn.width,cn.height);const s=d.customState||{};q.drawImage(makeRunnerSprite(d.custom?s.coat:defaultCoats[i],d.custom?(s.jersey||s.vest||colors[i]):colors[i],d.custom?s.marking:'none',d.custom?s.tail:'long',d.custom?s.hair:'none',d.custom?s.ears:'folded'),0,0,240,120);dogVest(q,0,0,d,240,120,i,0);});}
  function escapeHTML(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
  function audio(){if(!soundOn)return null;if(!audioCtx){const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return null;audioCtx=new AC()}if(audioCtx.state==='suspended')audioCtx.resume();return audioCtx}
  function bell(){
@@ -1323,19 +1487,22 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    return {correct,stats,winner};
  }
  function endRace(){
-   running=false;cancelAnimationFrame(raf);raf=0;
+   if(!running||!finishOrder.length)return;
+   running=false;raceFinished=true;cancelAnimationFrame(raf);raf=0;if(raceWatchdogTimer){clearTimeout(raceWatchdogTimer);raceWatchdogTimer=null;}raceEpoch++;
    const winner=finishOrder[0].i,results=finishOrder.map((x,rank)=>({...x,dog:runners[x.i],rank:rank+1}));
    lastCommentAt=0;commentaryLastLeader=-1;commentaryLastSecond=-1;
    $('ddBroadcastState').textContent='FINISHED';
    $('raceTimer').textContent='FINISHED';
    const res=updateStats(winner);
-   pickrow.querySelectorAll('.racePickV6').forEach((b,i)=>{b.classList.toggle('winner',i===winner);b.classList.remove('selected');if(i===winner){const badge=document.createElement('span');badge.className='ddPickBadge';badge.textContent='WINNER';b.appendChild(badge)}});
+   pickrow.querySelectorAll('.racePickV6').forEach((b,i)=>{b.disabled=false;b.classList.toggle('winner',i===winner);b.classList.remove('selected');if(i===winner&&!b.querySelector('.ddPickBadge')){const badge=document.createElement('span');badge.className='ddPickBadge';badge.textContent='WINNER';b.appendChild(badge)}});
    run.disabled=false;run.textContent='Run the race again';
    const msg=`🏁 ${res.winner.name} wins the Dog Dollars Cup! ${res.correct?'You picked the winner — 110 Cup points!':'You picked '+runners[chosen].name+'. You earn 10 participation points.'}`;
    $('raceMsg').textContent=msg;
    if($('raceExtras'))$('raceExtras').style.display='flex';
    speak(`And it's ${res.winner.name} at the line! ${res.winner.name} wins the Dog Dollars Cup! ${res.correct?'You called it! One hundred and ten Cup points.':'Ten participation points for the race.'}`,{force:true});
    stopCrowd();
+   if(pendingCustom){const next=pendingCustom;pendingCustom=null;applyCustomDog(next);chosen=Math.max(0,Math.min(7,Number(next.num||7)-1));buildPicks();}
+   $('raceMsg').textContent=msg;
    draw(0);
  }
  function frame(ts){
@@ -1344,53 +1511,43 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    const elapsed=(ts-startTime)/1000;
    if(ts-lastFrame>65){draw(ts);lastFrame=ts;if(Math.random()<.38)pawBeats()}
    const maxTime=Math.max(...finishOrder.map(x=>x.time));
-   if(elapsed>=maxTime){endRace();return}
+   if(elapsed>=maxTime || elapsed>=12.5){endRace();return}
    raf=requestAnimationFrame(frame);
  }
  function startRace(){
    if(running)return;
-   if(!sprite.complete||!sprite.naturalWidth){$('raceMsg').textContent='Loading the racing greyhound artwork — try again in a moment.';sprite.onload=()=>draw(0);return}
-   running=true;startTime=0;lastFrame=0;particles=[];chooseFinishOrder();
-   $('ddBroadcastState').textContent='LIVE';$('raceTimer').textContent='RACING';run.disabled=true;run.textContent='Race in progress…';
-   pickrow.querySelectorAll('button').forEach(b=>{b.disabled=true});
-   if($('raceMsg'))$('raceMsg').textContent='And they’re off! Watch the field charge for the line…';
-   lastCommentAt=0;commentaryLastLeader=-1;commentaryLastSecond=-1;
-   bell();startCrowd();speak('They are coming into the boxes for the Dog Dollars Cup… set… and they are off!',{force:true});
-   const started=performance.now();raf=requestAnimationFrame(frame);
-   // Ensure a winner is not displayed until all dogs reach the finish.
-   const check=()=>{if(!running)return;const elapsed=(performance.now()-(startTime||performance.now()))/1000;if(elapsed>10.2)endRace();else setTimeout(check,300)};setTimeout(check,10000);
+   if(!sprite.complete||!sprite.naturalWidth){$('raceMsg').textContent='Loading the racing greyhound artwork — try again in a moment.';sprite.onload=()=>{draw(0);drawPickThumbs();renderRealPreview()};return}
+   running=true;raceFinished=false;startTime=0;lastFrame=0;particles=[];chooseFinishOrder();raceEpoch++;const thisRace=raceEpoch;
+   $('ddBroadcastState').textContent='LIVE';$('raceTimer').textContent='RACING';run.disabled=true;run.textContent='Race in progress…';pickrow.querySelectorAll('button').forEach(b=>{b.disabled=true});
+   if($('raceMsg'))$('raceMsg').textContent='And they’re off! Watch the field charge for the line…';lastCommentAt=0;commentaryLastLeader=-1;commentaryLastSecond=-1;
+   bell();startCrowd();speak('They are coming into the boxes for the Dog Dollars Cup… set… and they are off!',{force:true});raf=requestAnimationFrame(frame);
+   // A single race-specific failsafe guards against a paused mobile animation without ending a later replay.
+   raceWatchdogTimer=setTimeout(()=>{if(running&&thisRace===raceEpoch)endRace();},12000);
  }
  run.addEventListener('click',startRace);
- if(reset)reset.addEventListener('click',()=>{if(running){running=false;cancelAnimationFrame(raf);stopCrowd()}finishOrder=[];startTime=0;pickrow.querySelectorAll('button').forEach(b=>b.disabled=false);$('ddBroadcastState').textContent='READY';$('raceTimer').textContent='READY';run.disabled=false;run.textContent='Run the race';$('raceMsg').textContent='Pick the dog you think will win, then run the Cup.';draw(0)});
+ if(reset)reset.addEventListener('click',()=>{raceEpoch++;if(raceWatchdogTimer){clearTimeout(raceWatchdogTimer);raceWatchdogTimer=null;}if(running){running=false;cancelAnimationFrame(raf);stopCrowd()}raceFinished=false;if(raceWatchdogTimer){clearTimeout(raceWatchdogTimer);raceWatchdogTimer=null;}if('speechSynthesis'in window)speechSynthesis.cancel();finishOrder=[];startTime=0;pendingCustom=null;if(currentCustom())applyActiveCustom();else{runners=baseRunners.map(x=>({...x,custom:false,customState:null}));dedupeRunnerNames(-1);}pickrow.querySelectorAll('button').forEach(b=>b.disabled=false);$('ddBroadcastState').textContent='READY';$('raceTimer').textContent='READY';run.disabled=false;run.textContent='Run the race';buildPicks();$('raceMsg').textContent='Pick the dog you think will win, then run the Cup.';draw(0)});
  $('ddReplayRace')?.addEventListener('click',()=>{if(running)return;startRace()});
  $('ddSoundToggle')?.addEventListener('click',()=>{soundOn=!soundOn;$('ddSoundToggle').setAttribute('aria-pressed',String(soundOn));$('ddSoundToggle').textContent=soundOn?'🔊 Sound on':'🔇 Sound off';if(!soundOn){stopCrowd();if('speechSynthesis'in window)speechSynthesis.cancel()}});
  // When the existing creator applies a custom dog, use that exact name/vest/number in the live game.
- $('ddUseDog')?.addEventListener('click',()=>setTimeout(()=>{applyActiveCustom();buildPicks();draw(0)},40));
- $('ddSaveDog')?.addEventListener('click',()=>setTimeout(syncCustomDogLive,30));
- ['ddDogName','ddMarking','ddJerseyPattern','ddJerseyNumber','ddHairStyle','ddEarStyle','ddAccessory','ddTailStyle'].forEach(id=>$(id)?.addEventListener('input',()=>setTimeout(syncCustomDogLive,0)));
- ['ddCoatSwatches','ddJerseySwatches'].forEach(id=>$(id)?.addEventListener('click',()=>setTimeout(syncCustomDogLive,0)));
+ let customSyncTimer=null;
+ function queueCustomDogSync(){if(customSyncTimer!==null)clearTimeout(customSyncTimer);customSyncTimer=setTimeout(()=>{customSyncTimer=null;syncCustomDogLive()},110)}
+ $('ddUseDog')?.addEventListener('click',()=>queueCustomDogSync());
+ $('ddSaveDog')?.addEventListener('click',()=>queueCustomDogSync());
+ ['ddDogName','ddMarking','ddJerseyPattern','ddJerseyNumber','ddHairStyle','ddEarStyle','ddAccessory','ddTailStyle'].forEach(id=>{const el=$(id);if(el){el.addEventListener('input',queueCustomDogSync);el.addEventListener('change',queueCustomDogSync);}});
+ ['ddCoatSwatches','ddJerseySwatches'].forEach(id=>$(id)?.addEventListener('click',queueCustomDogSync));
  // Rebuild pick cards when the race names change or a custom dog is restored.
  function syncCustomDogLive(){
    renderRealPreview();
    const selectedCoat=document.querySelector('#ddCoatSwatches .ddSwatch[aria-pressed="true"]');
    const selectedVest=document.querySelector('#ddJerseySwatches .ddSwatch[aria-pressed="true"]');
-   const dog={
-     name:($('ddDogName')?.value||'Your Greyhound').trim().slice(0,24)||'Your Greyhound',
-     num:String($('ddJerseyNumber')?.value||'7'),
-     coat:selectedCoat?.dataset.col||'#75604b',
-     jersey:selectedVest?.dataset.col||'#171717',
-     vest:selectedVest?.dataset.col||'#171717',
-     trim:'#f3c842',
-     pattern:$('ddJerseyPattern')?.value||'solid',
-     markings:$('ddMarking')?.value||'none',
-     hair:$('ddHairStyle')?.value||'sleek',
-     ears:$('ddEarStyle')?.value||'natural',
-     accessory:$('ddAccessory')?.value||'none',
-     tail:$('ddTailStyle')?.value||'natural'
-   };
+   const name=String($('ddDogName')?.value||'Your Greyhound').trim().slice(0,24)||'Your Greyhound';
+   const n=String($('ddJerseyNumber')?.value||'7');
+   const dog={version:2,name,num:n,coat:selectedCoat?.dataset.col||'#75604b',jersey:selectedVest?.dataset.col||'#171717',vest:selectedVest?.dataset.col||'#171717',trim:'#f3c842',pattern:$('ddJerseyPattern')?.value||'solid',marking:$('ddMarking')?.value||'none',hair:$('ddHairStyle')?.value||'none',ears:$('ddEarStyle')?.value||'folded',accessory:$('ddAccessory')?.value||'none',tail:$('ddTailStyle')?.value||'long'};
    try{localStorage.setItem('ddActiveCustomDog',JSON.stringify(dog))}catch(e){}
    window.dispatchEvent(new CustomEvent('ddCustomDogChanged',{detail:dog}));
  }
+ window.ddSyncCustomDogLive=syncCustomDogLive;
+ window.ddQueueCustomDogLive=queueCustomDogSync;
  function renderRealPreview(){
    const stage=$('ddDogStage');if(!stage)return;
    let coat='#75604b',vest='#171717',trim='#f3c842',name=$('ddDogName')?.value||'Your Greyhound',num=$('ddJerseyNumber')?.value||'7';
@@ -1403,6 +1560,7 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    if(pattern==='hoops')patternSvg='<path d="M540 240H785 M555 285H790" stroke="#f4f0e7" stroke-width="16"/>';
    if(pattern==='diagonal')patternSvg='<path d="M555 195L700 330 M610 178L755 300" stroke="#f4f0e7" stroke-width="17"/>';
    if(pattern==='gold')patternSvg='<path d="M560 230L665 315L770 220" fill="none" stroke="#f3c842" stroke-width="19"/>';
+   if(pattern==='split')patternSvg='<path d="M655 166L704 180L756 298L708 316Z" fill="#f5f1e8" opacity=".9"/>';
    // Markings are layered over the photographic greyhound rather than replacing it with a cartoon.
    const marking=$('ddMarking')?.value||'none';
    let markingsSvg='';
@@ -1412,13 +1570,70 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    if(marking==='brindle')markingsSvg='<g fill="none" stroke="#211c18" stroke-width="13" stroke-linecap="round" opacity=".48"><path d="M285 145l24 49m8-61 22 47m12-42 21 42m10-52 21 40m9-28 20 34m15-35 18 35"/></g>';
    const coatFilters={'#242321':'brightness(.68) saturate(.65)','#66717b':'hue-rotate(165deg) saturate(.65)','#c99b6c':'sepia(.6) saturate(1.3) brightness(1.08)','#75604b':'sepia(.35) saturate(1.15)','#eee9df':'brightness(1.45) saturate(.2)','#9b6247':'sepia(.65) saturate(1.4) hue-rotate(330deg)','#a7a9ac':'grayscale(.55) brightness(1.18)'};
    const coatFilter=coatFilters[coat]||'none';
-   const crest=hair==='crest'?'<path d="M1004 132 Q1020 111 1041 119 Q1059 119 1078 139 Q1054 130 1037 135 Q1020 136 1004 132 Z" fill="'+coat+'" fill-opacity=".82" stroke="#171717" stroke-opacity=".6" stroke-width="4"/>':'';
-   const collar=accessory==='collar'||accessory==='tag'?'<path d="M925 210L1000 260" stroke="#e9c34e" stroke-width="17"/><circle cx="975" cy="267" r="13" fill="#f3c842"/>':'';
-   stage.innerHTML=`<div class="ddRealDogPreview"><img src="${spriteSrc}" style="filter:${coatFilter}" alt="Realistic greyhound wearing racing silks"><svg viewBox="0 0 1200 600" role="img" aria-label="${escapeHTML(name)} custom racing greyhound"><path d="M510 180L610 160L735 190L820 270L790 335L690 365L555 300Z" fill="${vest}" fill-opacity=".88" stroke="${trim}" stroke-width="9"/>${markingsSvg}${patternSvg}<text x="675" y="265" font-size="58" font-weight="900" text-anchor="middle" fill="#fff" stroke="#111" stroke-width="4" paint-order="stroke">${escapeHTML(num)}</text>${crest}${collar}</svg><div class="ddDogNamePlate">${escapeHTML(name)} · BOX ${escapeHTML(num)}</div></div>`;
+   const photoSrc=runnerSpriteUrl(coat,vest,marking,$('ddTailStyle')?.value||'long',hair,$('ddEarStyle')?.value||'folded');
+   const crest=hair==='crest'?'<path d="M1004 132 Q1020 111 1041 119 Q1059 119 1078 139 Q1054 130 1037 135 Q1020 136 1004 132 Z" fill="'+coat+'" fill-opacity=".82" stroke="#171717" stroke-opacity=".6" stroke-width="4"/>':hair==='mohawk'?'<path d="M1005 131 L1018 105 L1031 125 L1046 98 L1058 126 L1077 139 Q1045 128 1005 131 Z" fill="'+coat+'" stroke="#171717" stroke-opacity=".6" stroke-width="4"/>':'';
+   const earStyle=$('ddEarStyle')?.value||'folded',tailStyle=$('ddTailStyle')?.value||'long';
+   const ears=(earStyle==='upright'||earStyle==='pricked')?'<path d="M1000 121 L1000 78 Q1012 86 1019 119 M1032 116 L1054 77 Q1060 96 1050 128" fill="'+coat+'" stroke="#241d18" stroke-width="5" stroke-linejoin="round"/>':earStyle==='folded'?'<path d="M1000 115 Q971 100 982 79 Q1010 86 1020 119 M1035 115 Q1062 93 1074 112 Q1063 132 1045 132" fill="'+coat+'" stroke="#241d18" stroke-width="5" stroke-linejoin="round"/>':earStyle==='floppy'?'<path d="M1000 115 Q968 102 975 81 Q1007 84 1020 119 M1035 115 Q1063 95 1075 110 Q1066 132 1045 132" fill="'+coat+'" stroke="#241d18" stroke-width="5" stroke-linejoin="round"/>':'';
+   const tail=tailStyle==='curled'?'<path d="M180 325 Q110 350 135 390 Q160 405 175 380" fill="none" stroke="'+coat+'" stroke-width="22" stroke-linecap="round"/>':tailStyle==='short'?'<path d="M180 325 L135 345" fill="none" stroke="'+coat+'" stroke-width="22" stroke-linecap="round"/>':'';
+   const collar=accessory==='collar'||accessory==='tag'?'<path d="M925 210 Q958 236 1000 260" stroke="#e9c34e" stroke-width="10" fill="none"/><circle cx="975" cy="247" r="10" fill="#f3c842"/>':accessory==='bandana'?'<path d="M907 192 L966 207 L947 246 L926 216 Z" fill="#c92a21" stroke="#f3c842" stroke-width="4"/>':'';
+   stage.innerHTML=`<div class="ddRealDogPreview"><img src="${photoSrc}" alt="Realistic greyhound wearing racing silks"><svg viewBox="0 0 1200 600" role="img" aria-label="${escapeHTML(name)} custom racing greyhound"><defs><clipPath id="ddPreviewVestClip"><path clip-rule="evenodd" fill-rule="evenodd" d="M532 132L553 111L616 123L683 105L752 103L797 121L823 150L853 196L883 238L869 274L842 305L820 331L783 346L747 334L709 309L668 289L618 265L571 240L545 216Z M766 216L778 207L794 205L809 216L817 232L816 248L805 261L789 262L777 250L769 234Z M617 157L633 141L697 153L715 178L704 198L635 187Z"/></clipPath></defs><g clip-path="url(#ddPreviewVestClip)">${patternSvg}</g><text x="670" y="171" font-size="54" font-weight="900" text-anchor="middle" dominant-baseline="middle" fill="${(parseInt(vest.slice(1,3),16)*.299+parseInt(vest.slice(3,5),16)*.587+parseInt(vest.slice(5,7),16)*.114)>155?'#171717':'#fff'}" stroke="#171717" stroke-opacity=".28" stroke-width="2" paint-order="stroke">${escapeHTML(num)}</text>${collar}</svg><div class="ddDogNamePlate">${escapeHTML(name)} · BOX ${escapeHTML(num)}</div></div>`;
  }
- buildPicks();sizeCanvas();sprite.onload=()=>{draw(0);renderRealPreview()};renderRealPreview();
+ buildPicks();sizeCanvas();sprite.onload=()=>{draw(0);renderRealPreview();drawPickThumbs()};renderRealPreview();window.addEventListener('resize',()=>{drawPickThumbs()},{passive:true});
 })();
 </script>
+
+
+<style id="dd-v17-final-mobile-shop-fixes">
+/* The product back image must respect its hidden state; an earlier display:block!important overrode it. */
+.productVisual.photo .ddHoodieBackActual[hidden],
+.productSideVisual .ddHoodieBackActual[hidden],
+.productSideVisual .prodPhoto[hidden]{display:none!important}
+.productVisual.photo .ddHoodieBackActual:not([hidden]){display:block!important}
+.productVisual.photo .productBackNote.ddBackPhotoNote{display:none!important}
+/* Reserve a genuine, visible bottom row for the Front / Back control on narrow screens. */
+.productSideVisual{
+  box-sizing:border-box!important;
+  height:clamp(185px,24vw,290px)!important;
+  min-height:185px!important;
+  aspect-ratio:auto!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+  align-items:stretch!important;
+  gap:7px!important;
+  padding:7px!important;
+}
+.productSideVisual .prodPhoto,
+.productSideVisual .ddHoodieBackActual:not([hidden]){
+  position:relative!important;inset:auto!important;
+  display:block!important;width:100%!important;
+  height:0!important;min-height:0!important;max-height:none!important;
+  flex:1 1 0!important;object-fit:contain!important;
+  padding:0!important;margin:0!important;
+  background:#f5f1e8!important;box-sizing:border-box!important;
+}
+.productSideVisual .ddHoodieBackActual[hidden]{display:none!important}
+.productSideVisual .productViewControls{
+  position:relative!important;inset:auto!important;transform:none!important;
+  flex:0 0 36px!important;height:36px!important;min-height:36px!important;
+  display:flex!important;width:100%!important;max-width:100%!important;
+  margin:0!important;padding:2px!important;gap:4px!important;
+  box-sizing:border-box!important;z-index:6!important;overflow:visible!important;
+}
+.productSideVisual .productViewControls .viewSide{
+  position:static!important;flex:1 1 50%!important;height:32px!important;min-height:32px!important;
+  min-width:0!important;width:50%!important;max-width:100%!important;
+  margin:0!important;padding:7px 3px!important;line-height:1.1!important;
+  font-size:11px!important;white-space:nowrap!important;transform:none!important;
+  box-sizing:border-box!important;
+}
+@media(min-width:701px){
+  .productSideVisual{height:clamp(250px,28vw,340px)!important;min-height:250px!important;padding:10px!important;gap:10px!important}
+  .productSideVisual .productViewControls{flex-basis:40px!important;height:40px!important;min-height:40px!important}
+  .productSideVisual .productViewControls .viewSide{height:36px!important;min-height:36px!important;font-size:13px!important}
+}
+</style>
 
 </body>
 </html>
