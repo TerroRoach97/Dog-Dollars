@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dog Dollars Cup v17 · Realistic Custom Greyhounds — Dog Dollars</title>
+<title>Dog Dollars Cup v18 · Live Custom Styles & Natural Commentary — Dog Dollars</title>
 <meta name="description" content="Dog Dollars — premium greyhound-racing streetwear, bar gear and free interactive racing games. Fast Track Fashion.">
 <meta name="theme-color" content="#111111">
 <meta property="og:type" content="website">
@@ -834,7 +834,7 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
  const $=id=>document.getElementById(id); if(!$('ddDogStage'))return;
  const coats=[['Black','#242321'],['Blue','#66717b'],['Fawn','#c99b6c'],['Brindle','#75604b'],['White','#eee9df'],['Red fawn','#9b6247'],['Silver','#a7a9ac']];
  const jerseys=[['Red','#c92a21'],['Black','#171717'],['Blue','#1d4ed8'],['Green','#166534'],['Gold','#f3c842'],['Pink','#df4d93'],['Cream','#f5f1e8'],['Purple','#6d28d9']];
- let state={name:'Gold Rush',coat:'#75604b',marking:'brindle',jersey:'#171717',pattern:'gold',num:'7',hair:'crest',ears:'folded',accessory:'collar',tail:'long'};
+ let state={name:'Gold Rush',coat:'#75604b',marking:'brindle',jersey:'#171717',pattern:'gold',num:'7',hair:'crest',ears:'folded',accessory:'collar',tail:'long',glasses:'none'};
  let saved=[];try{saved=JSON.parse(localStorage.getItem('ddCustomDogs')||'[]');if(!Array.isArray(saved))saved=[]}catch(e){saved=[]}
  const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
  function addOption(id,label,options,afterId){
@@ -847,11 +847,12 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    options.forEach(([value,text])=>{const o=document.createElement('option');o.value=value;o.textContent=text;select.appendChild(o)});
    wrap.append(labelEl,select);anchorField.parentNode.insertBefore(wrap,anchorField);
  }
- addOption('ddHairStyle','Head / coat style',[['none','Natural smooth coat'],['crest','Short natural crest']], 'ddJerseySwatches');
+ addOption('ddHairStyle','Head / coat style',[['none','Natural smooth coat'],['crest','Short natural crest'],['mohawk','Mohawk crest']], 'ddJerseySwatches');
  addOption('ddEarStyle','Ear style',[['folded','Folded ears'],['pricked','Alert ears'],['floppy','Floppy ears']], 'ddMarking');
  addOption('ddAccessory','Extra style',[['none','No accessory'],['collar','Gold collar'],['bandana','Racing bandana'],['tag','Gold kennel tag']], 'ddJerseyPattern');
  addOption('ddTailStyle','Tail style',[['long','Long tail'],['curled','Curled tail'],['short','Short tail']], 'ddJerseyNumber');
- $('ddHairStyle').value=state.hair;$('ddEarStyle').value=state.ears;$('ddAccessory').value=state.accessory;$('ddTailStyle').value=state.tail;
+ addOption('ddGlasses','Glasses',[['none','No glasses'],['round','Round racing glasses'],['sunglasses','Dark racing shades']], 'ddTailStyle');
+ $('ddHairStyle').value=state.hair;$('ddEarStyle').value=state.ears;$('ddAccessory').value=state.accessory;$('ddTailStyle').value=state.tail;$('ddGlasses').value=state.glasses||'none';
 
  function dogSvg(d=state){
    let marks='';
@@ -878,6 +879,8 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    if(d.accessory==='collar')accessory='<path d="M271 119Q289 126 306 117" fill="none" stroke="#f3c842" stroke-width="6"/><circle cx="293" cy="124" r="5" fill="#f3c842" stroke="#171717" stroke-width="2"/>';
    if(d.accessory==='bandana')accessory='<path d="M267 116L300 118L288 145L278 126Z" fill="#c92a21" stroke="#f3c842" stroke-width="3"/>';
    if(d.accessory==='tag')accessory='<circle cx="292" cy="126" r="9" fill="#f3c842" stroke="#171717" stroke-width="2"/><text x="292" y="130" text-anchor="middle" font-size="10" font-weight="900" fill="#171717">DD</text>';
+   if(d.glasses==='round')accessory+='<g fill="rgba(18,18,18,.18)" stroke="#171717" stroke-width="3"><circle cx="310" cy="94" r="8"/><circle cx="328" cy="96" r="8"/><path d="M318 95h2M302 92l-5 -2M336 94l5 -2" fill="none"/></g>';
+   if(d.glasses==='sunglasses')accessory+='<g fill="#171717" stroke="#f3c842" stroke-width="2.5"><path d="M300 88l15 2 1 11q-8 5-13-2z"/><path d="M320 91l15 1-2 10q-8 5-13-2z"/><path d="M315 92l5 1M300 89l-5 -2M335 92l5 -1" fill="none"/></g>';
    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 235" role="img" aria-label="${esc(d.name)} custom greyhound wearing jersey ${esc(d.num)}">
    <defs><linearGradient id="coatShade" x1="0" x2=".8" y1="0" y2="1"><stop stop-color="${d.coat}"/><stop offset="1" stop-color="#171615"/></linearGradient><linearGradient id="vestShade"><stop stop-color="${d.jersey}"/><stop offset="1" stop-color="#101010"/></linearGradient></defs>
    <ellipse cx="210" cy="204" rx="165" ry="13" fill="#000" opacity=".35"/>
@@ -895,20 +898,20 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
  }
  function readControls(){
    state.name=$('ddDogName').value.trim()||'My Greyhound';state.marking=$('ddMarking').value;state.pattern=$('ddJerseyPattern').value;state.num=$('ddJerseyNumber').value;
-   state.hair=$('ddHairStyle')?.value||'crest';state.ears=$('ddEarStyle')?.value||'folded';state.accessory=$('ddAccessory')?.value||'collar';state.tail=$('ddTailStyle')?.value||'long';
+   state.hair=$('ddHairStyle')?.value||'crest';state.ears=$('ddEarStyle')?.value||'folded';state.accessory=$('ddAccessory')?.value||'collar';state.tail=$('ddTailStyle')?.value||'long';state.glasses=$('ddGlasses')?.value||'none';
  }
  function render(){readControls();if(typeof window.ddQueueCustomDogLive==='function'){window.ddQueueCustomDogLive();return;}if(typeof window.ddSyncCustomDogLive==='function'){window.ddSyncCustomDogLive();return;}$('ddDogStage').innerHTML=dogSvg();}
  function swatches(container,arr,key){$(container).innerHTML=arr.map(([name,col])=>`<button type="button" class="ddSwatch" style="background:${col}" aria-label="${name}" title="${name}" aria-pressed="${state[key]===col}" data-col="${col}"></button>`).join('');$(container).querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{state[key]=b.dataset.col;swatches(container,arr,key);render()}));}
  function populate(){const sel=$('ddSavedSelect');sel.innerHTML='<option value="">Choose a saved dog</option>'+saved.map((d,i)=>`<option value="${i}">${esc(d.name)} · Box ${d.num}</option>`).join('');$('ddSavedList').innerHTML=saved.map((d,i)=>`<div class="ddSavedCard"><img src="${'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(dogSvg(d))}" alt=""><div style="flex:1"><strong>${esc(d.name)}</strong><small>${esc(d.marking)} coat · ${esc(d.hair||'sleek')} style · box ${d.num}</small></div><button type="button" class="btn ghost" data-dd-delete="${i}" aria-label="Delete ${esc(d.name)}">Delete</button></div>`).join('');$('ddSavedList').querySelectorAll('[data-dd-delete]').forEach(b=>b.addEventListener('click',()=>{saved.splice(Number(b.dataset.ddDelete),1);persist()}));}
  function persist(){try{localStorage.setItem('ddCustomDogs',JSON.stringify(saved))}catch(e){}populate()}
- function load(){const i=Number($('ddSavedSelect').value);if(!Number.isInteger(i)||!saved[i])return;state={...state,...saved[i]};$('ddDogName').value=state.name;$('ddMarking').value=state.marking;$('ddJerseyPattern').value=state.pattern;$('ddJerseyNumber').value=state.num;['ddHairStyle','ddEarStyle','ddAccessory','ddTailStyle'].forEach((id,i)=>{const key=['hair','ears','accessory','tail'][i];if($(id))$(id).value=state[key]||({hair:'crest',ears:'folded',accessory:'collar',tail:'long'}[key])});swatches('ddCoatSwatches',coats,'coat');swatches('ddJerseySwatches',jerseys,'jersey');render();$('ddDogMessage').textContent='Loaded '+state.name+'. Keep editing or use this dog in the Cup.';}
+ function load(){const i=Number($('ddSavedSelect').value);if(!Number.isInteger(i)||!saved[i])return;state={...state,...saved[i]};$('ddDogName').value=state.name;$('ddMarking').value=state.marking;$('ddJerseyPattern').value=state.pattern;$('ddJerseyNumber').value=state.num;['ddHairStyle','ddEarStyle','ddAccessory','ddTailStyle','ddGlasses'].forEach((id,i)=>{const key=['hair','ears','accessory','tail','glasses'][i];if($(id))$(id).value=state[key]||({hair:'crest',ears:'folded',accessory:'collar',tail:'long',glasses:'none'}[key])});swatches('ddCoatSwatches',coats,'coat');swatches('ddJerseySwatches',jerseys,'jersey');render();$('ddDogMessage').textContent='Loaded '+state.name+'. Keep editing or use this dog in the Cup.';}
  $('ddSaveDog').addEventListener('click',()=>{render();const d={...state,id:Date.now(),svgData:'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(dogSvg(state))};const existing=saved.findIndex(x=>x.name.toLowerCase()===d.name.toLowerCase());if(existing>=0)saved[existing]=d;else if(saved.length<8)saved.push(d);else{$('ddDogMessage').textContent='Your kennel holds 8 custom dogs. Delete one before saving another.';return;}persist();$('ddSavedSelect').value=String(saved.findIndex(x=>x.id===d.id));$('ddDogMessage').textContent=d.name+' saved to your kennel on this device.';});
  $('ddLoadDog').addEventListener('click',load);
  $('ddUseDog').addEventListener('click',()=>{render();const data='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(dogSvg(state));const idx=Math.max(0,Math.min(7,Number(state.num)-1));try{localStorage.setItem('ddActiveCustomDog',JSON.stringify({...state,svgData:data}));if(typeof raceDogs!=='undefined'&&Array.isArray(raceDogs)){raceDogs[idx].img=data;raceDogs[idx].name=state.name;raceDogs[idx].style='Custom runner';raceDogs[idx].customDog=true;const lane=$('runner-'+state.num);const im=lane?.querySelector('img');if(im){im.src=data;im.alt=state.name;}const label=lane?.querySelector('.runnerName');if(label)label.textContent=`BOX ${state.num} · ${state.name}`;const card=document.querySelectorAll('#pickrow .racePickV6')[idx];if(card){const ci=card.querySelector('img');if(ci){ci.src=data;ci.alt=state.name;}const strong=card.querySelector('strong');if(strong)strong.textContent=`BOX ${state.num} · ${state.name}`;const small=card.querySelector('small');if(small)small.textContent='Custom runner';}}}catch(e){}$('ddDogMessage').textContent=state.name+' is set for box '+state.num+'. Start the race to try your custom runner.';document.querySelector('#race')?.scrollIntoView({behavior:'smooth',block:'start'});});
- ['ddDogName','ddMarking','ddJerseyPattern','ddJerseyNumber','ddHairStyle','ddEarStyle','ddAccessory','ddTailStyle'].forEach(id=>$(id)?.addEventListener('input',render));
+ ['ddDogName','ddMarking','ddJerseyPattern','ddJerseyNumber','ddHairStyle','ddEarStyle','ddAccessory','ddTailStyle','ddGlasses'].forEach(id=>$(id)?.addEventListener('input',render));
  swatches('ddCoatSwatches',coats,'coat');swatches('ddJerseySwatches',jerseys,'jersey');
  // Restore an active custom runner saved before page refresh.
- try{const active=JSON.parse(localStorage.getItem('ddActiveCustomDog')||'null');if(active&&active.name){state={...state,...active};$('ddDogName').value=state.name||'Gold Rush';$('ddMarking').value=state.marking||'brindle';$('ddJerseyPattern').value=state.pattern||'gold';$('ddJerseyNumber').value=String(state.num||'7');['ddHairStyle','ddEarStyle','ddAccessory','ddTailStyle'].forEach((id,i)=>{const key=['hair','ears','accessory','tail'][i];if($(id)&&state[key])$(id).value=state[key]});swatches('ddCoatSwatches',coats,'coat');swatches('ddJerseySwatches',jerseys,'jersey');if(active.svgData){const idx=Math.max(0,Math.min(7,Number(active.num||7)-1));if(typeof raceDogs!=='undefined'&&raceDogs[idx]){raceDogs[idx].img=active.svgData;raceDogs[idx].name=active.name;raceDogs[idx].style='Custom runner';raceDogs[idx].customDog=true;}}}}catch(e){}
+ try{const active=JSON.parse(localStorage.getItem('ddActiveCustomDog')||'null');if(active&&active.name){state={...state,...active};$('ddDogName').value=state.name||'Gold Rush';$('ddMarking').value=state.marking||'brindle';$('ddJerseyPattern').value=state.pattern||'gold';$('ddJerseyNumber').value=String(state.num||'7');['ddHairStyle','ddEarStyle','ddAccessory','ddTailStyle','ddGlasses'].forEach((id,i)=>{const key=['hair','ears','accessory','tail','glasses'][i];if($(id)&&state[key])$(id).value=state[key]});swatches('ddCoatSwatches',coats,'coat');swatches('ddJerseySwatches',jerseys,'jersey');if(active.svgData){const idx=Math.max(0,Math.min(7,Number(active.num||7)-1));if(typeof raceDogs!=='undefined'&&raceDogs[idx]){raceDogs[idx].img=active.svgData;raceDogs[idx].name=active.name;raceDogs[idx].style='Custom runner';raceDogs[idx].customDog=true;}}}}catch(e){}
  populate();render();
 })();
 
@@ -1195,7 +1198,7 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
  const ctx=canvas.getContext('2d');
  const top=document.createElement('div');top.className='ddBroadcastTop';top.innerHTML='<span class="ddBroadcastLive"><i class="ddBroadcastDot"></i><span>DOG DOLLARS CUP · RACE 01</span></span><span id="ddBroadcastState">READY</span>';
  track.before(top);
- const tools=document.createElement('div');tools.className='ddBroadcastTools';tools.innerHTML='<button type="button" id="ddSoundToggle" aria-pressed="true">🔊 Sound on</button><button type="button" id="ddReplayRace">↻ Replay race</button><span style="margin-left:auto;align-self:center;color:#c9c2b4;font-size:11px">8 runners · just for fun</span>';
+ const tools=document.createElement('div');tools.className='ddBroadcastTools';tools.innerHTML='<button type="button" id="ddSoundToggle" aria-pressed="true">🔊 Sound on</button><button type="button" id="ddReplayRace">↻ Replay race</button><span style="margin-left:auto;align-self:center;color:#c9c2b4;font-size:11px">8 runners · live race call</span>';
  track.after(tools);
 
  // Replace old controls to remove any competing handlers from the previous prototype.
@@ -1297,6 +1300,12 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
      if(s.accessory==='collar'||s.accessory==='tag'){ctx.strokeStyle='#e9c34e';ctx.lineWidth=9;ctx.beginPath();ctx.moveTo(928,185);ctx.quadraticCurveTo(968,220,1000,231);ctx.stroke();}
      if(s.accessory==='tag'){ctx.fillStyle='#f3c842';ctx.beginPath();ctx.arc(973,229,10,0,Math.PI*2);ctx.fill();ctx.strokeStyle='#171717';ctx.lineWidth=2;ctx.stroke();}
      if(s.accessory==='bandana'){ctx.fillStyle='#c92a21';ctx.strokeStyle='#f3c842';ctx.lineWidth=4;ctx.beginPath();ctx.moveTo(917,177);ctx.lineTo(984,200);ctx.lineTo(962,236);ctx.lineTo(934,208);ctx.closePath();ctx.fill();ctx.stroke();}
+     ctx.restore();
+   }
+   if(s.glasses==='round'||s.glasses==='sunglasses'){
+     ctx.save();ctx.translate(x,y);ctx.scale(w/1200,h/600);ctx.lineCap='round';ctx.lineJoin='round';
+     if(s.glasses==='round'){ctx.fillStyle='rgba(18,18,18,.22)';ctx.strokeStyle='#171717';ctx.lineWidth=7;ctx.beginPath();ctx.ellipse(1021,146,20,13,-.08,0,Math.PI*2);ctx.ellipse(1060,150,18,12,.05,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.beginPath();ctx.moveTo(1040,147);ctx.lineTo(1044,148);ctx.moveTo(1002,143);ctx.lineTo(989,139);ctx.moveTo(1078,148);ctx.lineTo(1090,147);ctx.stroke();}
+     else{ctx.fillStyle='rgba(12,12,12,.9)';ctx.strokeStyle='#e9c34e';ctx.lineWidth=6;ctx.beginPath();ctx.moveTo(1000,134);ctx.quadraticCurveTo(1020,132,1040,142);ctx.lineTo(1037,157);ctx.quadraticCurveTo(1017,165,1005,151);ctx.closePath();ctx.moveTo(1043,143);ctx.quadraticCurveTo(1060,141,1078,145);ctx.lineTo(1074,159);ctx.quadraticCurveTo(1058,166,1047,156);ctx.closePath();ctx.fill();ctx.stroke();ctx.beginPath();ctx.moveTo(1038,143);ctx.lineTo(1046,144);ctx.moveTo(1001,137);ctx.lineTo(989,133);ctx.moveTo(1078,147);ctx.lineTo(1090,146);ctx.stroke();}
      ctx.restore();
    }
  }
@@ -1440,33 +1449,73 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
      if(speechSynthesis.speaking && !opts.force)return;
      if(opts.force)speechSynthesis.cancel();
      const u=new SpeechSynthesisUtterance(text);
-     const voices=speechSynthesis.getVoices();
-     const preferred=voices.find(v=>/^en-AU$/i.test(v.lang))||voices.find(v=>/^en-GB$/i.test(v.lang))||voices.find(v=>/^en/i.test(v.lang));
-     if(preferred)u.voice=preferred;
-     u.rate=opts.rate||0.96;u.pitch=opts.pitch||0.88;u.volume=.92;
-     speechSynthesis.speak(u);
+      const voices=speechSynthesis.getVoices();
+      const au=voices.filter(v=>/^en-AU$/i.test(v.lang));
+      const maleName=/daniel|gordon|lee|james|oliver|russell|alex|fred|david|thomas|mark|aaron|liam/i;
+      const femaleName=/karen|matilda|catherine|moira|tessa|female|samantha|victoria/i;
+      const preferred=au.find(v=>maleName.test(v.name)&&!femaleName.test(v.name))
+        ||au.find(v=>!femaleName.test(v.name))
+        ||voices.find(v=>/^en-GB$/i.test(v.lang)&&maleName.test(v.name))
+        ||voices.find(v=>/^en/i.test(v.lang)&&maleName.test(v.name))
+        ||au[0]||voices.find(v=>/^en-GB$/i.test(v.lang))||voices.find(v=>/^en/i.test(v.lang));
+      if(preferred)u.voice=preferred;
+      u.lang=preferred?.lang||'en-AU';
+      // The supplied “Fast Track Fashion” reference has a confident, warm, natural male delivery;
+      // keep calls punchy but slightly slower, with a less synthetic high pitch.
+      u.rate=opts.rate||0.91;u.pitch=opts.pitch||0.84;u.volume=.96;
+      speechSynthesis.speak(u);
    }catch(e){}
  }
  function liveCommentary(elapsed){
    if(!soundOn||!('speechSynthesis'in window)||speechSynthesis.speaking)return;
    const order=runners.map((dog,i)=>({dog,i,p:progressAt(i,elapsed),time:finishOrder.find(x=>x.i===i)?.time||9})).sort((a,b)=>b.p-a.p);
-   if(!order.length)return;
-   const leader=order[0], second=order[1], sec=Math.floor(elapsed);
-   if(sec===commentaryLastSecond || elapsed-lastCommentAt<2.15)return;
+   if(order.length<2)return;
+   const leader=order[0], second=order[1], third=order[2], sec=Math.floor(elapsed);
+   if(sec===commentaryLastSecond || elapsed-lastCommentAt<2.35)return;
    commentaryLastSecond=sec;lastCommentAt=elapsed;
+   const pick=arr=>arr[Math.floor(Math.random()*arr.length)];
    let line='';
-   // Short, varied race-call lines using the actual current running order.
-   if(elapsed<2.2) line=`And away they go! ${leader.dog.name} has jumped out well, with ${second.dog.name} right on its heels.`;
-   else if(elapsed<4.3) line=`${leader.dog.name} is travelling nicely out in front. ${second.dog.name} is giving chase.`;
-   else if(elapsed<6.2) line=`They are starting to wind it up now. ${second.dog.name} is coming after ${leader.dog.name}.`;
-   else if(leader.p>.82) line=`Into the final stretch! ${leader.dog.name} in front, ${second.dog.name} is chasing!`;
-   else line=`They are bunching up! ${leader.dog.name}, ${second.dog.name} and the rest are racing for the line!`;
-   // Avoid repeating the same leader call several times in a row.
-   if(leader.i===commentaryLastLeader && elapsed<5.5) line=`Still ${leader.dog.name} in front, and ${second.dog.name} has not given up yet.`;
+   if(elapsed<1.8){
+     line=pick([
+       `And away they go! ${leader.dog.name} has begun well, with ${second.dog.name} right there.`,
+       `They're off and racing! ${leader.dog.name} is prominent early, and ${second.dog.name} is keeping close.`,
+       `Good start from the field. ${leader.dog.name} is showing pace, with ${second.dog.name} handy.`
+     ]);
+   }else if(elapsed<4.0){
+     line=pick([
+       `${leader.dog.name} has found the front. ${second.dog.name} is tracking it closely.`,
+       `${leader.dog.name} is travelling nicely, but ${second.dog.name} is right on its shoulder.`,
+       `A good contest developing here. ${leader.dog.name} leads from ${second.dog.name}.`
+     ]);
+   }else if(elapsed<6.4){
+     line=pick([
+       `${second.dog.name} is starting to make a move. ${leader.dog.name} needs to keep going.`,
+       `They're bunching up now, with ${leader.dog.name} just in front of ${second.dog.name}.`,
+       `${third ? third.dog.name : second.dog.name} is coming into it as they build towards the turn.`
+     ]);
+   }else if(leader.p>.76){
+     line=pick([
+       `Here they come around the turn! ${leader.dog.name} has the lead, ${second.dog.name} is chasing hard!`,
+       `Into the home straight now — ${leader.dog.name} in front, and ${second.dog.name} is giving everything!`,
+       `It's getting serious now! ${leader.dog.name} leads, with ${second.dog.name} closing late!`
+     ]);
+   }else{
+     line=pick([
+       `There's not much between them. ${leader.dog.name} just leads from ${second.dog.name}.`,
+       `They're spread across the track, and ${leader.dog.name} has a narrow advantage.`,
+       `${leader.dog.name} is in front for now, but ${second.dog.name} is still in the hunt.`
+     ]);
+   }
+   if(leader.i===commentaryLastLeader && elapsed<6.0){
+     line=pick([
+       `${leader.dog.name} still has the advantage. ${second.dog.name} is keeping the pressure on.`,
+       `${leader.dog.name} continues to lead, with ${second.dog.name} waiting for a chance.`,
+       `No change at the front just yet — ${leader.dog.name} from ${second.dog.name}.`
+     ]);
+   }
    commentaryLastLeader=leader.i;
    speak(line);
  }
-
  function updateStats(winnerIdx){
    let stats={points:0,races:0,streak:0,bestStreak:0,last:''};
    try{stats={...stats,...JSON.parse(localStorage.getItem('ddCupStats')||'{}')}}catch(e){}
@@ -1533,7 +1582,7 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
  function queueCustomDogSync(){if(customSyncTimer!==null)clearTimeout(customSyncTimer);customSyncTimer=setTimeout(()=>{customSyncTimer=null;syncCustomDogLive()},110)}
  $('ddUseDog')?.addEventListener('click',()=>queueCustomDogSync());
  $('ddSaveDog')?.addEventListener('click',()=>queueCustomDogSync());
- ['ddDogName','ddMarking','ddJerseyPattern','ddJerseyNumber','ddHairStyle','ddEarStyle','ddAccessory','ddTailStyle'].forEach(id=>{const el=$(id);if(el){el.addEventListener('input',queueCustomDogSync);el.addEventListener('change',queueCustomDogSync);}});
+ ['ddDogName','ddMarking','ddJerseyPattern','ddJerseyNumber','ddHairStyle','ddEarStyle','ddAccessory','ddTailStyle','ddGlasses'].forEach(id=>{const el=$(id);if(el){el.addEventListener('input',queueCustomDogSync);el.addEventListener('change',queueCustomDogSync);}});
  ['ddCoatSwatches','ddJerseySwatches'].forEach(id=>$(id)?.addEventListener('click',queueCustomDogSync));
  // Rebuild pick cards when the race names change or a custom dog is restored.
  function syncCustomDogLive(){
@@ -1542,7 +1591,7 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    const selectedVest=document.querySelector('#ddJerseySwatches .ddSwatch[aria-pressed="true"]');
    const name=String($('ddDogName')?.value||'Your Greyhound').trim().slice(0,24)||'Your Greyhound';
    const n=String($('ddJerseyNumber')?.value||'7');
-   const dog={version:2,name,num:n,coat:selectedCoat?.dataset.col||'#75604b',jersey:selectedVest?.dataset.col||'#171717',vest:selectedVest?.dataset.col||'#171717',trim:'#f3c842',pattern:$('ddJerseyPattern')?.value||'solid',marking:$('ddMarking')?.value||'none',hair:$('ddHairStyle')?.value||'none',ears:$('ddEarStyle')?.value||'folded',accessory:$('ddAccessory')?.value||'none',tail:$('ddTailStyle')?.value||'long'};
+   const dog={version:2,name,num:n,coat:selectedCoat?.dataset.col||'#75604b',jersey:selectedVest?.dataset.col||'#171717',vest:selectedVest?.dataset.col||'#171717',trim:'#f3c842',pattern:$('ddJerseyPattern')?.value||'solid',marking:$('ddMarking')?.value||'none',hair:$('ddHairStyle')?.value||'none',ears:$('ddEarStyle')?.value||'folded',accessory:$('ddAccessory')?.value||'none',tail:$('ddTailStyle')?.value||'long',glasses:$('ddGlasses')?.value||'none'};
    try{localStorage.setItem('ddActiveCustomDog',JSON.stringify(dog))}catch(e){}
    window.dispatchEvent(new CustomEvent('ddCustomDogChanged',{detail:dog}));
  }
@@ -1554,7 +1603,7 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    const c=document.querySelector('#ddCoatSwatches .ddSwatch[aria-pressed="true"]');if(c)coat=c.dataset.col||coat;
    const j=document.querySelector('#ddJerseySwatches .ddSwatch[aria-pressed="true"]');if(j)vest=j.dataset.col||vest;
    const pattern=$('ddJerseyPattern')?.value||'solid';
-   const hair=$('ddHairStyle')?.value||'sleek',accessory=$('ddAccessory')?.value||'none';
+   const hair=$('ddHairStyle')?.value||'none',accessory=$('ddAccessory')?.value||'none',glasses=$('ddGlasses')?.value||'none';
    let patternSvg='';
    if(pattern==='stripes')patternSvg='<path d="M560 180L620 340 M640 175L700 330" stroke="#f4f0e7" stroke-width="18"/>';
    if(pattern==='hoops')patternSvg='<path d="M540 240H785 M555 285H790" stroke="#f4f0e7" stroke-width="16"/>';
@@ -1576,7 +1625,8 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    const ears=(earStyle==='upright'||earStyle==='pricked')?'<path d="M1000 121 L1000 78 Q1012 86 1019 119 M1032 116 L1054 77 Q1060 96 1050 128" fill="'+coat+'" stroke="#241d18" stroke-width="5" stroke-linejoin="round"/>':earStyle==='folded'?'<path d="M1000 115 Q971 100 982 79 Q1010 86 1020 119 M1035 115 Q1062 93 1074 112 Q1063 132 1045 132" fill="'+coat+'" stroke="#241d18" stroke-width="5" stroke-linejoin="round"/>':earStyle==='floppy'?'<path d="M1000 115 Q968 102 975 81 Q1007 84 1020 119 M1035 115 Q1063 95 1075 110 Q1066 132 1045 132" fill="'+coat+'" stroke="#241d18" stroke-width="5" stroke-linejoin="round"/>':'';
    const tail=tailStyle==='curled'?'<path d="M180 325 Q110 350 135 390 Q160 405 175 380" fill="none" stroke="'+coat+'" stroke-width="22" stroke-linecap="round"/>':tailStyle==='short'?'<path d="M180 325 L135 345" fill="none" stroke="'+coat+'" stroke-width="22" stroke-linecap="round"/>':'';
    const collar=accessory==='collar'||accessory==='tag'?'<path d="M925 210 Q958 236 1000 260" stroke="#e9c34e" stroke-width="10" fill="none"/><circle cx="975" cy="247" r="10" fill="#f3c842"/>':accessory==='bandana'?'<path d="M907 192 L966 207 L947 246 L926 216 Z" fill="#c92a21" stroke="#f3c842" stroke-width="4"/>':'';
-   stage.innerHTML=`<div class="ddRealDogPreview"><img src="${photoSrc}" alt="Realistic greyhound wearing racing silks"><svg viewBox="0 0 1200 600" role="img" aria-label="${escapeHTML(name)} custom racing greyhound"><defs><clipPath id="ddPreviewVestClip"><path clip-rule="evenodd" fill-rule="evenodd" d="M532 132L553 111L616 123L683 105L752 103L797 121L823 150L853 196L883 238L869 274L842 305L820 331L783 346L747 334L709 309L668 289L618 265L571 240L545 216Z M766 216L778 207L794 205L809 216L817 232L816 248L805 261L789 262L777 250L769 234Z M617 157L633 141L697 153L715 178L704 198L635 187Z"/></clipPath></defs><g clip-path="url(#ddPreviewVestClip)">${patternSvg}</g><text x="670" y="171" font-size="54" font-weight="900" text-anchor="middle" dominant-baseline="middle" fill="${(parseInt(vest.slice(1,3),16)*.299+parseInt(vest.slice(3,5),16)*.587+parseInt(vest.slice(5,7),16)*.114)>155?'#171717':'#fff'}" stroke="#171717" stroke-opacity=".28" stroke-width="2" paint-order="stroke">${escapeHTML(num)}</text>${collar}</svg><div class="ddDogNamePlate">${escapeHTML(name)} · BOX ${escapeHTML(num)}</div></div>`;
+   const glassesSvg=glasses==='round'?'<g fill="rgba(16,16,16,.22)" stroke="#151515" stroke-width="7"><ellipse cx="1021" cy="146" rx="20" ry="13"/><ellipse cx="1060" cy="150" rx="18" ry="12"/><path d="M1040 147l4 1M1002 143l-13 -4M1078 148l12 -1" fill="none" stroke-linecap="round"/></g>':glasses==='sunglasses'?'<g fill="rgba(12,12,12,.88)" stroke="#e9c34e" stroke-width="6"><path d="M1000 134Q1020 132 1040 142L1037 157Q1017 165 1005 151Z"/><path d="M1043 143Q1060 141 1078 145L1074 159Q1058 166 1047 156Z"/><path d="M1038 143l8 1M1001 137l-12 -4M1078 147l12 -1" fill="none" stroke-linecap="round"/></g>':'';
+   stage.innerHTML=`<div class="ddRealDogPreview"><img src="${photoSrc}" alt="Realistic greyhound wearing racing silks"><svg viewBox="0 0 1200 600" role="img" aria-label="${escapeHTML(name)} custom racing greyhound"><defs><clipPath id="ddPreviewVestClip"><path clip-rule="evenodd" fill-rule="evenodd" d="M532 132L553 111L616 123L683 105L752 103L797 121L823 150L853 196L883 238L869 274L842 305L820 331L783 346L747 334L709 309L668 289L618 265L571 240L545 216Z M766 216L778 207L794 205L809 216L817 232L816 248L805 261L789 262L777 250L769 234Z M617 157L633 141L697 153L715 178L704 198L635 187Z"/></clipPath></defs><g clip-path="url(#ddPreviewVestClip)">${patternSvg}</g><text x="670" y="171" font-size="54" font-weight="900" text-anchor="middle" dominant-baseline="middle" fill="${(parseInt(vest.slice(1,3),16)*.299+parseInt(vest.slice(3,5),16)*.587+parseInt(vest.slice(5,7),16)*.114)>155?'#171717':'#fff'}" stroke="#171717" stroke-opacity=".28" stroke-width="2" paint-order="stroke">${escapeHTML(num)}</text>${collar}${glassesSvg}</svg><div class="ddDogNamePlate">${escapeHTML(name)} · BOX ${escapeHTML(num)}</div></div>`;
  }
  buildPicks();sizeCanvas();sprite.onload=()=>{draw(0);renderRealPreview();drawPickThumbs()};renderRealPreview();window.addEventListener('resize',()=>{drawPickThumbs()},{passive:true});
 })();
