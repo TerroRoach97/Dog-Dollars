@@ -468,6 +468,15 @@
 <section class="section upgradeSection" id="custom-kennel"><div class="wrap"><div class="sectionHead"><div><div class="eyebrow">Build your own runner</div><h2>Create your custom dog.</h2></div><p>Choose a coat, markings and racing silks, give your greyhound a name, then save it to your kennel and use it in the Cup.</p></div>
 <div class="ddBuilder"><div><div class="ddDogStage" id="ddDogStage" aria-live="polite"></div><p class="ddHint" style="margin-top:10px">Preview your greyhound in racing silks. Change its name, coat tone, vest colour, markings and accessories, then send the same design into the Cup.</p><div id="ddSavedList" style="display:grid;gap:8px;margin-top:12px"></div></div><div class="ddControls">
 <div class="ddField"><label for="ddDogName">Dog name</label><input id="ddDogName" maxlength="24" value="Gold Rush" placeholder="Name your greyhound"></div>
+<div class="ddField" id="ddNameIdeasField"><label for="ddNameIdeas">Quick name ideas</label>
+<select id="ddNameIdeas"><option value="">Choose a name idea (optional)</option>
+<option>Fast Track</option><option>Lucky Break</option><option>Red Alert</option><option>Photo Finish</option>
+<option>Rocket Run</option><option>Dust Devil</option><option>Gold Rush</option><option>Blue Lightning</option>
+<option>Cash Out</option><option>Track Star</option><option>Rapid Fire</option><option>Lucky Charm</option>
+<option>Night Runner</option><option>Silver Bullet</option><option>Turbo</option><option>Wild Card</option>
+<option>Chase The Ace</option><option>Quick Silver</option><option>Hot Pursuit</option><option>Last Laugh</option>
+<option>Big Fella</option><option>Miss Mischief</option><option>Little Rocket</option><option>Harbour Rocket</option>
+</select><p class="ddHint" style="margin:4px 0 0">Pick a suggestion or type any name above.</p></div>
 <div class="ddField"><span class="ddControlTitle">Coat colour</span><div class="ddSwatches" id="ddCoatSwatches"></div></div>
 <div class="ddField"><label for="ddMarking">Coat markings</label><select id="ddMarking"><option value="none">Solid coat</option><option value="blaze">White face blaze</option><option value="socks">White socks</option><option value="patch">Distinctive side patch</option><option value="brindle">Brindle stripes</option></select></div>
 <div class="ddField"><span class="ddControlTitle">Jersey main colour</span><div class="ddSwatches" id="ddJerseySwatches"></div></div>
@@ -832,8 +841,8 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
 
 (()=>{
  const $=id=>document.getElementById(id); if(!$('ddDogStage'))return;
- const coats=[['Black','#242321'],['Blue','#66717b'],['Fawn','#c99b6c'],['Brindle','#75604b'],['White','#eee9df'],['Red fawn','#9b6247'],['Silver','#a7a9ac']];
- const jerseys=[['Red','#c92a21'],['Black','#171717'],['Blue','#1d4ed8'],['Green','#166534'],['Gold','#f3c842'],['Pink','#df4d93'],['Cream','#f5f1e8'],['Purple','#6d28d9']];
+ const coats=[['Black','#242321'],['Blue','#66717b'],['Fawn','#c99b6c'],['Brindle','#75604b'],['White','#eee9df'],['Red fawn','#9b6247'],['Silver','#a7a9ac'],['Dark brindle','#49372f'],['Light fawn','#dfb783'],['Chocolate','#5b392d'],['Blue brindle','#626d78'],['Cream','#e8d6b2'],['Black and white','#2d2b2a'],['Golden fawn','#bd854b'],['Slate grey','#858b91'],['Rich red','#844a3b'],['Pale silver','#c2c3c3']];
+ const jerseys=[['Red','#c92a21'],['Black','#171717'],['Blue','#1d4ed8'],['Green','#166534'],['Gold','#f3c842'],['Pink','#df4d93'],['Cream','#f5f1e8'],['Purple','#6d28d9'],['Orange','#f07824'],['Teal','#168c8c'],['Sky blue','#5ab4e6'],['Maroon','#7b263d'],['Lime','#a4c639'],['Navy','#172b55'],['White','#ffffff'],['Hot coral','#ff5b65'],['Copper','#b66b3d'],['Lavender','#a89ae6']];
  let state={name:'Gold Rush',coat:'#75604b',marking:'brindle',jersey:'#171717',pattern:'gold',num:'7',hair:'crest',ears:'folded',accessory:'collar',tail:'long',glasses:'none'};
  let saved=[];try{saved=JSON.parse(localStorage.getItem('ddCustomDogs')||'[]');if(!Array.isArray(saved))saved=[]}catch(e){saved=[]}
  const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -896,6 +905,9 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    <path d="M70 194h20M126 195h20M283 191h22M319 187h20" stroke="#eee9df" stroke-width="7" stroke-linecap="round"/>
    <text x="210" y="226" fill="#f3c842" font-family="Arial,sans-serif" font-size="12" font-weight="900" letter-spacing="2" text-anchor="middle">${esc(d.name.toUpperCase().slice(0,24))}</text></svg>`;
  }
+ const nameIdeas=$('ddNameIdeas');
+ if(nameIdeas)nameIdeas.addEventListener('change',()=>{if(nameIdeas.value){$('ddDogName').value=nameIdeas.value;render();}});
+ $('ddDogName')?.addEventListener('input',()=>{if(nameIdeas)nameIdeas.value='';});
  function readControls(){
    state.name=$('ddDogName').value.trim()||'My Greyhound';state.marking=$('ddMarking').value;state.pattern=$('ddJerseyPattern').value;state.num=$('ddJerseyNumber').value;
    state.hair=$('ddHairStyle')?.value||'crest';state.ears=$('ddEarStyle')?.value||'folded';state.accessory=$('ddAccessory')?.value||'collar';state.tail=$('ddTailStyle')?.value||'long';state.glasses=$('ddGlasses')?.value||'none';
@@ -1198,7 +1210,7 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
  const ctx=canvas.getContext('2d');
  const top=document.createElement('div');top.className='ddBroadcastTop';top.innerHTML='<span class="ddBroadcastLive"><i class="ddBroadcastDot"></i><span>DOG DOLLARS CUP · RACE 01</span></span><span id="ddBroadcastState">READY</span>';
  track.before(top);
- const tools=document.createElement('div');tools.className='ddBroadcastTools';tools.innerHTML='<button type="button" id="ddSoundToggle" aria-pressed="true">🔊 Sound on</button><button type="button" id="ddReplayRace">↻ Replay race</button><span style="margin-left:auto;align-self:center;color:#c9c2b4;font-size:11px">8 runners · live race call</span>';
+ const tools=document.createElement('div');tools.className='ddBroadcastTools';tools.innerHTML='<button type="button" id="ddSoundToggle" aria-pressed="true">🔊 Race sounds on</button><button type="button" id="ddReplayRace">↻ Replay race</button><span style="margin-left:auto;align-self:center;color:#c9c2b4;font-size:11px">8 runners · race sounds</span>';
  track.after(tools);
 
  // Replace old controls to remove any competing handlers from the previous prototype.
@@ -1392,7 +1404,7 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
      if(running){ctx.fillStyle='rgba(255,239,205,.96)';ctx.font='800 9px system-ui';ctx.textAlign='left';ctx.fillText(dog.name.toUpperCase(),Math.max(40,Math.min(x+dogW*.28,w-112)),y-geo.laneH*.27)}
    });
    if(particles.length){particles=particles.filter(p=>p.life>0);particles.forEach(p=>{p.x+=p.vx*.016;p.y+=p.vy*.016;p.life-=.016;ctx.globalAlpha=Math.max(0,p.life*2);ctx.fillStyle='#d8b184';ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fill()});ctx.globalAlpha=1}
-   if(running){ctx.fillStyle='#f3c842';ctx.font='900 12px system-ui';ctx.textAlign='left';ctx.fillText('LIVE RACE  ·  '+(elapsed.toFixed(1))+'s',w*.05,geo.trackY-13);liveCommentary(elapsed)}
+   if(running){ctx.fillStyle='#f3c842';ctx.font='900 12px system-ui';ctx.textAlign='left';ctx.fillText('LIVE RACE  ·  '+(elapsed.toFixed(1))+'s',w*.05,geo.trackY-13)}
  }
  function progressAt(i,elapsed){
    const result=finishOrder.find(x=>x.i===i);const total=result?.time||9;
@@ -1442,7 +1454,26 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
  }
  function stopCrowd(){if(crowdGain&&audioCtx){crowdGain.gain.setTargetAtTime(0,audioCtx.currentTime,.4);setTimeout(()=>{try{crowdSource?.stop()}catch(e){}crowdSource=null;crowdGain=null},900)}}
  function pawBeats(){const a=audio();if(!a)return;const o=a.createOscillator(),g=a.createGain();o.type='triangle';o.frequency.setValueAtTime(90+Math.random()*40,a.currentTime);g.gain.setValueAtTime(.0001,a.currentTime);g.gain.exponentialRampToValueAtTime(.035,a.currentTime+.01);g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+.09);o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+.1)}
- function speak(text, opts={}){
+ let pawLoopTimer=null;
+ function finishChime(){
+   const a=audio();if(!a)return;
+   [660,880,990].forEach((f,i)=>{const o=a.createOscillator(),g=a.createGain();o.type='sine';o.frequency.value=f;g.gain.setValueAtTime(.0001,a.currentTime+i*.075);g.gain.exponentialRampToValueAtTime(.075,a.currentTime+i*.075+.025);g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+i*.075+.42);o.connect(g);g.connect(a.destination);o.start(a.currentTime+i*.075);o.stop(a.currentTime+i*.075+.44)});
+ }
+ function gateClack(){
+   const a=audio();if(!a)return;
+   const len=Math.floor(a.sampleRate*.055),buf=a.createBuffer(1,len,a.sampleRate),d=buf.getChannelData(0);
+   for(let i=0;i<len;i++)d[i]=(Math.random()*2-1)*(1-i/len);
+   const src=a.createBufferSource(),f=a.createBiquadFilter(),g=a.createGain();
+   src.buffer=buf;f.type='highpass';f.frequency.value=900;g.gain.value=.18;
+   src.connect(f);f.connect(g);g.connect(a.destination);src.start();
+ }
+ function startPawLoop(){
+   stopPawLoop();if(!soundOn)return;
+   let beat=0;
+   pawLoopTimer=setInterval(()=>{if(!running||!soundOn)return;beat++;pawBeats();if(beat%3===0)pawBeats();},165);
+ }
+ function stopPawLoop(){if(pawLoopTimer){clearInterval(pawLoopTimer);pawLoopTimer=null;}}
+  function speak(text, opts={}){
    if(!soundOn||!('speechSynthesis'in window))return;
    try{
      // Do not chop a call in half: live updates wait until the current line finishes.
@@ -1537,7 +1568,7 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
  }
  function endRace(){
    if(!running||!finishOrder.length)return;
-   running=false;raceFinished=true;cancelAnimationFrame(raf);raf=0;if(raceWatchdogTimer){clearTimeout(raceWatchdogTimer);raceWatchdogTimer=null;}raceEpoch++;
+   running=false;raceFinished=true;cancelAnimationFrame(raf);raf=0;stopPawLoop();if(raceWatchdogTimer){clearTimeout(raceWatchdogTimer);raceWatchdogTimer=null;}raceEpoch++;
    const winner=finishOrder[0].i,results=finishOrder.map((x,rank)=>({...x,dog:runners[x.i],rank:rank+1}));
    lastCommentAt=0;commentaryLastLeader=-1;commentaryLastSecond=-1;
    $('ddBroadcastState').textContent='FINISHED';
@@ -1569,14 +1600,14 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    running=true;raceFinished=false;startTime=0;lastFrame=0;particles=[];chooseFinishOrder();raceEpoch++;const thisRace=raceEpoch;
    $('ddBroadcastState').textContent='LIVE';$('raceTimer').textContent='RACING';run.disabled=true;run.textContent='Race in progress…';pickrow.querySelectorAll('button').forEach(b=>{b.disabled=true});
    if($('raceMsg'))$('raceMsg').textContent='And they’re off! Watch the field charge for the line…';lastCommentAt=0;commentaryLastLeader=-1;commentaryLastSecond=-1;
-   bell();startCrowd();speak('They are coming into the boxes for the Dog Dollars Cup… set… and they are off!',{force:true});raf=requestAnimationFrame(frame);
+   bell();startCrowd();startPawLoop();gateClack();raf=requestAnimationFrame(frame);
    // A single race-specific failsafe guards against a paused mobile animation without ending a later replay.
    raceWatchdogTimer=setTimeout(()=>{if(running&&thisRace===raceEpoch)endRace();},12000);
  }
  run.addEventListener('click',startRace);
- if(reset)reset.addEventListener('click',()=>{raceEpoch++;if(raceWatchdogTimer){clearTimeout(raceWatchdogTimer);raceWatchdogTimer=null;}if(running){running=false;cancelAnimationFrame(raf);stopCrowd()}raceFinished=false;if(raceWatchdogTimer){clearTimeout(raceWatchdogTimer);raceWatchdogTimer=null;}if('speechSynthesis'in window)speechSynthesis.cancel();finishOrder=[];startTime=0;pendingCustom=null;if(currentCustom())applyActiveCustom();else{runners=baseRunners.map(x=>({...x,custom:false,customState:null}));dedupeRunnerNames(-1);}pickrow.querySelectorAll('button').forEach(b=>b.disabled=false);$('ddBroadcastState').textContent='READY';$('raceTimer').textContent='READY';run.disabled=false;run.textContent='Run the race';buildPicks();$('raceMsg').textContent='Pick the dog you think will win, then run the Cup.';draw(0)});
+ if(reset)reset.addEventListener('click',()=>{raceEpoch++;if(raceWatchdogTimer){clearTimeout(raceWatchdogTimer);raceWatchdogTimer=null;}if(running){running=false;cancelAnimationFrame(raf);stopCrowd();stopPawLoop()}raceFinished=false;if(raceWatchdogTimer){clearTimeout(raceWatchdogTimer);raceWatchdogTimer=null;}stopPawLoop();if('speechSynthesis'in window)speechSynthesis.cancel();finishOrder=[];startTime=0;pendingCustom=null;if(currentCustom())applyActiveCustom();else{runners=baseRunners.map(x=>({...x,custom:false,customState:null}));dedupeRunnerNames(-1);}pickrow.querySelectorAll('button').forEach(b=>b.disabled=false);$('ddBroadcastState').textContent='READY';$('raceTimer').textContent='READY';run.disabled=false;run.textContent='Run the race';buildPicks();$('raceMsg').textContent='Pick the dog you think will win, then run the Cup.';draw(0)});
  $('ddReplayRace')?.addEventListener('click',()=>{if(running)return;startRace()});
- $('ddSoundToggle')?.addEventListener('click',()=>{soundOn=!soundOn;$('ddSoundToggle').setAttribute('aria-pressed',String(soundOn));$('ddSoundToggle').textContent=soundOn?'🔊 Sound on':'🔇 Sound off';if(!soundOn){stopCrowd();if('speechSynthesis'in window)speechSynthesis.cancel()}});
+ $('ddSoundToggle')?.addEventListener('click',()=>{soundOn=!soundOn;if(!soundOn)stopPawLoop();else if(running)startPawLoop();$('ddSoundToggle').setAttribute('aria-pressed',String(soundOn));$('ddSoundToggle').textContent=soundOn?'🔊 Race sounds on':'🔇 Race sounds off';if(!soundOn){stopCrowd();if('speechSynthesis'in window)speechSynthesis.cancel()}});
  // When the existing creator applies a custom dog, use that exact name/vest/number in the live game.
  let customSyncTimer=null;
  function queueCustomDogSync(){if(customSyncTimer!==null)clearTimeout(customSyncTimer);customSyncTimer=setTimeout(()=>{customSyncTimer=null;syncCustomDogLive()},110)}
