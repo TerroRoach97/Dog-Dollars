@@ -888,8 +888,8 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    if(d.accessory==='collar')accessory='<path d="M271 119Q289 126 306 117" fill="none" stroke="#f3c842" stroke-width="6"/><circle cx="293" cy="124" r="5" fill="#f3c842" stroke="#171717" stroke-width="2"/>';
    if(d.accessory==='bandana')accessory='<path d="M267 116L300 118L288 145L278 126Z" fill="#c92a21" stroke="#f3c842" stroke-width="3"/>';
    if(d.accessory==='tag')accessory='<circle cx="292" cy="126" r="9" fill="#f3c842" stroke="#171717" stroke-width="2"/><text x="292" y="130" text-anchor="middle" font-size="10" font-weight="900" fill="#171717">DD</text>';
-   if(d.glasses==='round')accessory+='<g fill="rgba(18,18,18,.18)" stroke="#171717" stroke-width="3"><circle cx="310" cy="94" r="8"/><circle cx="328" cy="96" r="8"/><path d="M318 95h2M302 92l-5 -2M336 94l5 -2" fill="none"/></g>';
-   if(d.glasses==='sunglasses')accessory+='<g fill="#171717" stroke="#f3c842" stroke-width="2.5"><path d="M300 88l15 2 1 11q-8 5-13-2z"/><path d="M320 91l15 1-2 10q-8 5-13-2z"/><path d="M315 92l5 1M300 89l-5 -2M335 92l5 -1" fill="none"/></g>';
+   if(d.glasses==='round')accessory+='<g fill="rgba(18,18,18,.18)" stroke="#171717" stroke-width="3"><circle cx="312" cy="101" r="8"/><circle cx="330" cy="102" r="8"/><path d="M320 101h2M304 99l-5 -2M338 100l5 -2" fill="none"/></g>';
+   if(d.glasses==='sunglasses')accessory+='<g fill="#171717" stroke="#f3c842" stroke-width="2.5"><path d="M302 96l15 2 1 11q-8 5-13-2z"/><path d="M322 98l15 1-2 10q-8 5-13-2z"/><path d="M317 99l5 1M302 97l-5 -2M337 99l5 -1" fill="none"/></g>';
    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 235" role="img" aria-label="${esc(d.name)} custom greyhound wearing jersey ${esc(d.num)}">
    <defs><linearGradient id="coatShade" x1="0" x2=".8" y1="0" y2="1"><stop stop-color="${d.coat}"/><stop offset="1" stop-color="#171615"/></linearGradient><linearGradient id="vestShade"><stop stop-color="${d.jersey}"/><stop offset="1" stop-color="#101010"/></linearGradient></defs>
    <ellipse cx="210" cy="204" rx="165" ry="13" fill="#000" opacity=".35"/>
@@ -1343,29 +1343,11 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
      [[281,150,301,190,5],[307,140,328,180,4],[336,147,357,186,5],[365,135,387,175,4],[397,143,417,181,5],[426,148,446,186,4],[453,148,472,183,5],[300,202,318,229,4],[345,198,365,226,4],[389,194,407,220,4]].forEach(([x1,y1,x2,y2,w])=>{const g=targetCtx.createLinearGradient(x1,y1,x2,y2);g.addColorStop(0,'rgba(24,20,18,0)');g.addColorStop(.25,'rgba(24,20,18,.45)');g.addColorStop(.75,'rgba(24,20,18,.50)');g.addColorStop(1,'rgba(24,20,18,0)');targetCtx.strokeStyle=g;targetCtx.lineWidth=w;targetCtx.beginPath();targetCtx.moveTo(x1,y1);targetCtx.lineTo(x2,y2);targetCtx.stroke()});targetCtx.restore();
    }
    targetCtx.globalAlpha=1;
-   if(s.hair==='crest'||s.hair==='mohawk'){
-     targetCtx.fillStyle=s.coat||'#75604b';targetCtx.strokeStyle='rgba(20,18,16,.75)';targetCtx.lineWidth=4;targetCtx.beginPath();
-     if(s.hair==='mohawk'){targetCtx.moveTo(1004,132);targetCtx.lineTo(1018,105);targetCtx.lineTo(1031,125);targetCtx.lineTo(1046,98);targetCtx.lineTo(1058,126);targetCtx.lineTo(1078,139)}
-     else {targetCtx.moveTo(1004,132);targetCtx.quadraticCurveTo(1020,111,1041,119);targetCtx.quadraticCurveTo(1059,119,1078,139);targetCtx.quadraticCurveTo(1054,130,1037,135)}
-     targetCtx.closePath();targetCtx.fill();targetCtx.stroke();
-   }
-   if(s.ears==='upright'||s.ears==='pricked'||s.ears==='folded'||s.ears==='floppy'){
-     targetCtx.fillStyle=s.coat||'#75604b';targetCtx.strokeStyle='rgba(20,18,16,.8)';targetCtx.lineWidth=4;targetCtx.beginPath();
-     if(s.ears==='upright'||s.ears==='pricked'){targetCtx.moveTo(1000,121);targetCtx.lineTo(1000,78);targetCtx.quadraticCurveTo(1015,88,1019,119);targetCtx.closePath();targetCtx.moveTo(1032,116);targetCtx.lineTo(1054,77);targetCtx.quadraticCurveTo(1060,98,1050,128);targetCtx.closePath()}
-     else if(s.ears==='floppy'){targetCtx.moveTo(1000,115);targetCtx.quadraticCurveTo(968,102,975,81);targetCtx.quadraticCurveTo(1007,84,1020,119);targetCtx.closePath();targetCtx.moveTo(1035,115);targetCtx.quadraticCurveTo(1063,95,1075,110);targetCtx.quadraticCurveTo(1066,132,1045,132);targetCtx.closePath()}
-     else {targetCtx.moveTo(1000,115);targetCtx.quadraticCurveTo(971,100,982,79);targetCtx.quadraticCurveTo(1010,86,1020,119);targetCtx.closePath();targetCtx.moveTo(1035,115);targetCtx.quadraticCurveTo(1062,93,1074,112);targetCtx.quadraticCurveTo(1063,132,1045,132);targetCtx.closePath()}
-     targetCtx.fill();targetCtx.stroke();
-   }
-   if(s.tail==='curled'||s.tail==='short'){
-     targetCtx.strokeStyle=s.coat||'#75604b';targetCtx.lineWidth=22;targetCtx.lineCap='round';targetCtx.beginPath();
-     if(s.tail==='curled'){targetCtx.moveTo(180,325);targetCtx.quadraticCurveTo(110,350,135,390);targetCtx.quadraticCurveTo(160,405,175,380)}
-     else {targetCtx.moveTo(180,325);targetCtx.lineTo(135,345)}
-     targetCtx.stroke();
-   }
+   // Hair, ears and tail are rendered once in makeRunnerSprite so they stay attached to the photographic silhouette.
    targetCtx.restore();
  }
  function drawDog(x,y,dog,idx,t,scale=1){
-   const w=150*scale,h=w*0.5;
+   const w=180*scale,h=w*0.5;
    if(sprite.complete&&sprite.naturalWidth){
      ctx.save();
      const s=dog.customState||{};
@@ -1391,7 +1373,7 @@ renderCupStats();renderPack();setupSilks();setupLogoSecret();
    const now=performance.now();
    const elapsed=running?(now-startTime)/1000:0;
    runners.forEach((dog,i)=>{
-     const scale=Math.min(1,geo.laneH/72),dogW=150*scale;
+     const scale=Math.min(1.12,geo.laneH/65),dogW=180*scale;
      const frozenResult=raceFinished&&finishOrder.length?finishOrder.find(x=>x.i===i):null;
      // Keep the finishing line-up staggered by the actual recorded finish rank.
      // Otherwise a frozen results frame can make all eight dogs look level at the line.
